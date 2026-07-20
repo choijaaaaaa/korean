@@ -47,7 +47,7 @@ function getFilteredWords() {
     if (!query) return true;
     return (
       word.hangul.toLowerCase().includes(query) ||
-      word.reading.toLowerCase().includes(query) ||
+      word.katakana.toLowerCase().includes(query) ||
       word.meaning.toLowerCase().includes(query)
     );
   });
@@ -86,7 +86,7 @@ function renderBreakdown(listEl, breakdown) {
   listEl.hidden = false;
   breakdown.forEach((item) => {
     const li = document.createElement("li");
-    li.textContent = `${item.word}(${item.reading}) — ${item.meaning}`;
+    li.textContent = `${item.word} — ${item.meaning}`;
     listEl.appendChild(li);
   });
 }
@@ -99,7 +99,6 @@ function buildWordCard(word) {
   badge.dataset.level = word.level;
 
   node.querySelector(".hangul").textContent = word.hangul;
-  node.querySelector(".reading").textContent = word.reading;
   node.querySelector(".meaning").textContent = word.meaning;
 
   const katakanaEl = node.querySelector(".katakana-reading");
@@ -144,9 +143,7 @@ function buildQuizCard(word) {
   badge.dataset.level = word.level;
 
   node.querySelector(".hangul").textContent = word.hangul;
-  node.querySelector(".hangul-reading").textContent = `(${word.reading})`;
   node.querySelector(".example-ko").innerHTML = highlightExample(word.example, word.hangul);
-  node.querySelector(".example-reading").textContent = `(${word.exampleReading})`;
 
   node.querySelector(".katakana-reading").textContent = word.katakana;
   node.querySelector(".meaning").textContent = word.meaning;
@@ -257,3 +254,169 @@ document.getElementById("card-next").addEventListener("click", () => {
 
 shuffleOrder();
 render();
+
+// ---------- 漢字語対応セクション ----------
+
+function renderHanjaPatterns() {
+  const listEl = document.getElementById("hanja-list");
+  listEl.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  HANJA_PATTERNS.forEach((group) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card";
+
+    const title = document.createElement("h3");
+    title.textContent = group.pattern;
+    card.appendChild(title);
+
+    const explanation = document.createElement("p");
+    explanation.className = "pattern-explanation";
+    explanation.textContent = group.explanation;
+    card.appendChild(explanation);
+
+    const pairList = document.createElement("ul");
+    pairList.className = "hanja-pair-list";
+    group.pairs.forEach((pair) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="hanja-hanja">${escapeHtml(pair.hanja)}</span>
+        <span class="hanja-korean">${escapeHtml(pair.korean)}</span>
+        <span class="hanja-arrow">→</span>
+        <span class="hanja-japanese">${escapeHtml(pair.japanese)}</span>
+        <span class="hanja-meaning">${escapeHtml(pair.meaning)}</span>`;
+      pairList.appendChild(li);
+    });
+    card.appendChild(pairList);
+
+    fragment.appendChild(card);
+  });
+
+  listEl.appendChild(fragment);
+}
+
+// ---------- 文法パターンセクション ----------
+
+const grammarState = { level: "ALL" };
+
+function renderGrammarPatterns() {
+  const listEl = document.getElementById("grammar-list");
+  listEl.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  const filtered = GRAMMAR.filter((g) => grammarState.level === "ALL" || g.level === grammarState.level);
+
+  filtered.forEach((g) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card";
+
+    const title = document.createElement("h3");
+    title.innerHTML = `<span class="grammar-pattern-text">${escapeHtml(g.pattern)}</span> <span class="grammar-title-ja">${escapeHtml(g.title)}</span>`;
+    card.appendChild(title);
+
+    const explanation = document.createElement("p");
+    explanation.className = "pattern-explanation";
+    explanation.textContent = g.explanation;
+    card.appendChild(explanation);
+
+    const exampleList = document.createElement("ul");
+    exampleList.className = "example-pair-list";
+    g.examples.forEach((ex) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="example-pair-ko">${escapeHtml(ex.korean)}</span>
+        <span class="example-pair-ja">${escapeHtml(ex.japanese)}</span>`;
+      exampleList.appendChild(li);
+    });
+    card.appendChild(exampleList);
+
+    fragment.appendChild(card);
+  });
+
+  listEl.appendChild(fragment);
+}
+
+document.querySelectorAll(".grammar-level-tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".grammar-level-tab").forEach((t) => {
+      t.classList.remove("is-active");
+      t.setAttribute("aria-pressed", "false");
+    });
+    tab.classList.add("is-active");
+    tab.setAttribute("aria-pressed", "true");
+    grammarState.level = tab.dataset.level;
+    renderGrammarPatterns();
+  });
+});
+
+// ---------- 発音規則セクション ----------
+
+function renderPronunciationRules() {
+  const listEl = document.getElementById("pronunciation-list");
+  listEl.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  PRONUNCIATION_RULES.forEach((rule) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card";
+
+    const title = document.createElement("h3");
+    title.textContent = rule.name;
+    card.appendChild(title);
+
+    const explanation = document.createElement("p");
+    explanation.className = "pattern-explanation";
+    explanation.textContent = rule.explanation;
+    card.appendChild(explanation);
+
+    const exampleList = document.createElement("ul");
+    exampleList.className = "example-pair-list";
+    rule.examples.forEach((ex) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="example-pair-ko">${escapeHtml(ex.written)} → [${escapeHtml(ex.pronounced)}]</span>
+        <span class="example-pair-ja">${escapeHtml(ex.meaning)}</span>`;
+      exampleList.appendChild(li);
+    });
+    card.appendChild(exampleList);
+
+    fragment.appendChild(card);
+  });
+
+  listEl.appendChild(fragment);
+}
+
+// ---------- セクション切り替え ----------
+
+const sections = {
+  word: document.getElementById("word-section"),
+  hanja: document.getElementById("hanja-section"),
+  grammar: document.getElementById("grammar-section"),
+  pronunciation: document.getElementById("pronunciation-section"),
+};
+
+const sectionRenderers = {
+  hanja: renderHanjaPatterns,
+  grammar: renderGrammarPatterns,
+  pronunciation: renderPronunciationRules,
+};
+
+const renderedSections = new Set();
+
+document.querySelectorAll(".section-tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".section-tab").forEach((t) => {
+      t.classList.remove("is-active");
+      t.setAttribute("aria-pressed", "false");
+    });
+    tab.classList.add("is-active");
+    tab.setAttribute("aria-pressed", "true");
+
+    const target = tab.dataset.section;
+    Object.entries(sections).forEach(([key, el]) => {
+      el.hidden = key !== target;
+    });
+
+    if (sectionRenderers[target] && !renderedSections.has(target)) {
+      sectionRenderers[target]();
+      renderedSections.add(target);
+    }
+  });
+});
