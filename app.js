@@ -256,19 +256,55 @@ shuffleOrder();
 render();
 
 // ---------- 漢字語対応セクション ----------
+// WHY: パターン数が増えるとカードを全部開いたまま並べるとスクロールが膨大になるため、
+// デフォルトは折りたたみ（アコーディオン）にし、検索時のみ該当パターンを自動展開する。
+
+const hanjaState = { query: "" };
+
+function buildHanjaPairItem(pair) {
+  const li = document.createElement("li");
+  li.innerHTML = `<span class="hanja-hanja">${escapeHtml(pair.hanja)}</span>
+    <span class="hanja-korean">${escapeHtml(pair.korean)}</span>
+    <span class="hanja-arrow">→</span>
+    <span class="hanja-japanese">${escapeHtml(pair.japanese)}</span>
+    <span class="hanja-meaning">${escapeHtml(pair.meaning)}</span>`;
+  return li;
+}
 
 function renderHanjaPatterns() {
   const listEl = document.getElementById("hanja-list");
+  const emptyState = document.getElementById("hanja-empty-state");
   listEl.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
+  const query = hanjaState.query.trim().toLowerCase();
+  const matchesQuery = (pair) =>
+    !query ||
+    pair.hanja.toLowerCase().includes(query) ||
+    pair.korean.toLowerCase().includes(query) ||
+    pair.japanese.toLowerCase().includes(query) ||
+    pair.meaning.toLowerCase().includes(query);
+
+  let visibleGroupCount = 0;
+
   HANJA_PATTERNS.forEach((group) => {
+    const pairs = query ? group.pairs.filter(matchesQuery) : group.pairs;
+    if (query && pairs.length === 0) return;
+    visibleGroupCount += 1;
+
     const card = document.createElement("article");
     card.className = "pattern-card";
 
-    const title = document.createElement("h3");
-    title.textContent = group.pattern;
-    card.appendChild(title);
+    const header = document.createElement("button");
+    header.type = "button";
+    header.className = "pattern-header";
+    header.setAttribute("aria-expanded", query ? "true" : "false");
+    header.innerHTML = `<span class="pattern-header-text">
+        <span class="pattern-title">${escapeHtml(group.pattern)}</span>
+        <span class="pattern-count">${pairs.length}件</span>
+      </span>
+      <span class="pattern-chevron">▶</span>`;
+    card.appendChild(header);
 
     const explanation = document.createElement("p");
     explanation.className = "pattern-explanation";
@@ -277,22 +313,27 @@ function renderHanjaPatterns() {
 
     const pairList = document.createElement("ul");
     pairList.className = "hanja-pair-list";
-    group.pairs.forEach((pair) => {
-      const li = document.createElement("li");
-      li.innerHTML = `<span class="hanja-hanja">${escapeHtml(pair.hanja)}</span>
-        <span class="hanja-korean">${escapeHtml(pair.korean)}</span>
-        <span class="hanja-arrow">→</span>
-        <span class="hanja-japanese">${escapeHtml(pair.japanese)}</span>
-        <span class="hanja-meaning">${escapeHtml(pair.meaning)}</span>`;
-      pairList.appendChild(li);
-    });
+    pairList.hidden = !query;
+    pairs.forEach((pair) => pairList.appendChild(buildHanjaPairItem(pair)));
     card.appendChild(pairList);
+
+    header.addEventListener("click", () => {
+      const isHidden = pairList.hidden;
+      pairList.hidden = !isHidden;
+      header.setAttribute("aria-expanded", String(isHidden));
+    });
 
     fragment.appendChild(card);
   });
 
   listEl.appendChild(fragment);
+  emptyState.hidden = visibleGroupCount !== 0;
 }
+
+document.getElementById("hanja-search").addEventListener("input", (e) => {
+  hanjaState.query = e.target.value;
+  renderHanjaPatterns();
+});
 
 // ---------- 文法パターンセクション ----------
 

@@ -72,7 +72,17 @@
       韓国語と日本語は漢字語彙の音対応がかなり規則的です。パッチム（韻尾）ごとのパターンを覚えると、
       知らない漢字語でも意味を推測しやすくなります。
     </p>
+    <div class="toolbar">
+      <input
+        type="search"
+        id="hanja-search"
+        class="search-input"
+        placeholder="漢字・韓国語・日本語・意味で検索"
+        aria-label="漢字語検索"
+      />
+    </div>
     <div id="hanja-list" class="pattern-grid"></div>
+    <p id="hanja-empty-state" class="empty-state" hidden>検索結果に該当する漢字語がありません。</p>
   </section>
 
   <!-- ---------- 文法パターンセクション ---------- -->
