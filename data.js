@@ -4,6 +4,11 @@
 // 個別に対照・検証してから追加する（japanessプロジェクトと同じ方針）。
 
 const VOCAB = [
+  { level: "3", hangul: "하나하나", katakana: "ハナハナ", meaning: "一つ一つ",
+    example: "하나하나 확인해요.", exampleKatakana: "ハナハナ ファギネヨ", exampleMeaning: "一つ一つ確認します。",
+    breakdown: [
+      { word: "확인", meaning: "確認" }
+    ] },
   { level: "3", hangul: "백", katakana: "ペク", meaning: "百",
     example: "백 명이 왔어요.", exampleKatakana: "ペン ミョンイ ワッソヨ", exampleMeaning: "100人が来ました。",
     breakdown: [
