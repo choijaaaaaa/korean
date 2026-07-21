@@ -4,6 +4,1106 @@
 // 個別に対照・検証してから追加する（japanessプロジェクトと同じ方針）。
 
 const VOCAB = [
+  { level: "5", hangul: "학업", katakana: "ハゴプ", meaning: "学業",
+    example: "학업에 집중해요.", exampleKatakana: "ハゴベ チプチュンヘヨ", exampleMeaning: "学業に集中します。",
+    breakdown: [
+      { word: "집중", meaning: "集中" }
+    ] },
+  { level: "5", hangul: "판매원", katakana: "パンメウォン", meaning: "販売員",
+    example: "판매원이에요.", exampleKatakana: "パンメウォニエヨ", exampleMeaning: "販売員です。",
+    breakdown: [
+      { word: "이에요", meaning: "です" }
+    ] },
+  { level: "5", hangul: "형광등", katakana: "ヒョングァンドゥン", meaning: "蛍光灯",
+    example: "형광등을 켜요.", exampleKatakana: "ヒョングァンドゥンウル キョヨ", exampleMeaning: "蛍光灯をつけます。",
+    breakdown: [
+      { word: "켜요", meaning: "つけます" }
+    ] },
+  { level: "5", hangul: "하반기", katakana: "ハバンギ", meaning: "下半期",
+    example: "하반기 계획이에요.", exampleKatakana: "ハバンギ ケフェギエヨ", exampleMeaning: "下半期の計画です。",
+    breakdown: [
+      { word: "계획", meaning: "計画" }
+    ] },
+  { level: "5", hangul: "투덜거리다", katakana: "トゥドルゴリダ", meaning: "ぶつぶつ言う",
+    example: "계속 투덜거려요.", exampleKatakana: "ケソク トゥドルゴリョヨ", exampleMeaning: "ずっとぶつぶつ言います。",
+    breakdown: [
+      { word: "계속", meaning: "ずっと" }
+    ] },
+  { level: "5", hangul: "떠들썩하다", katakana: "トドゥルソカダ", meaning: "騒がしい",
+    example: "교실이 떠들썩해요.", exampleKatakana: "キョシリ トドゥルソケヨ", exampleMeaning: "教室が騒がしいです。",
+    breakdown: [
+      { word: "교실", meaning: "教室" }
+    ] },
+  { level: "5", hangul: "차근차근", katakana: "チャグンチャグン", meaning: "じっくりと",
+    example: "차근차근 설명해요.", exampleKatakana: "チャグンチャグン ソルミョンヘヨ", exampleMeaning: "じっくり説明します。",
+    breakdown: [
+      { word: "설명", meaning: "説明" }
+    ] },
+  { level: "5", hangul: "전환점", katakana: "チョヌァンジョム", meaning: "転換点",
+    example: "전환점이 됐어요.", exampleKatakana: "チョヌァンジョミ ドェッソヨ", exampleMeaning: "転換点になりました。",
+    breakdown: [
+      { word: "됐어요", meaning: "なりました" }
+    ] },
+  { level: "5", hangul: "별나다", katakana: "ピョルナダ", meaning: "風変わりだ",
+    example: "성격이 별나요.", exampleKatakana: "ソンギョギ ピョルナヨ", exampleMeaning: "性格が変わっています。",
+    breakdown: [
+      { word: "성격", meaning: "性格" }
+    ] },
+  { level: "5", hangul: "비료", katakana: "ピリョ", meaning: "肥料",
+    example: "비료를 줘요.", exampleKatakana: "ピリョルル ジュォヨ", exampleMeaning: "肥料をやります。",
+    breakdown: [
+      { word: "줘요", meaning: "やります" }
+    ] },
+  { level: "5", hangul: "서술", katakana: "ソスル", meaning: "叙述",
+    example: "자세히 서술해요.", exampleKatakana: "チャセヒ ソスレヨ", exampleMeaning: "詳しく叙述します。",
+    breakdown: [
+      { word: "자세히", meaning: "詳しく" }
+    ] },
+  { level: "5", hangul: "친밀감", katakana: "チンミルガム", meaning: "親密感",
+    example: "친밀감이 생겨요.", exampleKatakana: "チンミルガミ センギョヨ", exampleMeaning: "親密感が生まれます。",
+    breakdown: [
+      { word: "생겨요", meaning: "生まれます" }
+    ] },
+  { level: "5", hangul: "과감하다", katakana: "クァガマダ", meaning: "果敢だ",
+    example: "과감한 결정이에요.", exampleKatakana: "クァガマン キョルジョンイエヨ", exampleMeaning: "果敢な決定です。",
+    breakdown: [
+      { word: "결정", meaning: "決定" }
+    ] },
+  { level: "5", hangul: "연평균", katakana: "ヨンピョンギュン", meaning: "年平均",
+    example: "연평균 기온이에요.", exampleKatakana: "ヨンピョンギュン キオニエヨ", exampleMeaning: "年平均気温です。",
+    breakdown: [
+      { word: "기온", meaning: "気温" }
+    ] },
+  { level: "5", hangul: "식생활", katakana: "シクセンファル", meaning: "食生活",
+    example: "식생활이 바뀌었어요.", exampleKatakana: "シクセンファリ パキョッソヨ", exampleMeaning: "食生活が変わりました。",
+    breakdown: [
+      { word: "바뀌었어요", meaning: "変わりました" }
+    ] },
+  { level: "5", hangul: "신형", katakana: "シニョン", meaning: "新型",
+    example: "신형 자동차예요.", exampleKatakana: "シニョン チャドンチャエヨ", exampleMeaning: "新型自動車です。",
+    breakdown: [
+      { word: "자동차", meaning: "自動車" }
+    ] },
+  { level: "5", hangul: "하락", katakana: "ハラク", meaning: "下落",
+    example: "가격이 하락해요.", exampleKatakana: "カギョギ ハラケヨ", exampleMeaning: "価格が下落します。",
+    breakdown: [
+      { word: "가격", meaning: "価格" }
+    ] },
+  { level: "5", hangul: "체념", katakana: "チェニョム", meaning: "諦め",
+    example: "체념하고 말았어요.", exampleKatakana: "チェニョマゴ マラッソヨ", exampleMeaning: "諦めてしまいました。",
+    breakdown: [
+      { word: "말았어요", meaning: "してしまいました" }
+    ] },
+  { level: "5", hangul: "지장", katakana: "チジャン", meaning: "支障",
+    example: "지장을 줘요.", exampleKatakana: "チジャンウル ジュォヨ", exampleMeaning: "支障をきたします。",
+    breakdown: [
+      { word: "줘요", meaning: "きたします" }
+    ] },
+  { level: "5", hangul: "폭발적", katakana: "ポクバルチョク", meaning: "爆発的",
+    example: "폭발적인 인기예요.", exampleKatakana: "ポクバルチョギン インギエヨ", exampleMeaning: "爆発的な人気です。",
+    breakdown: [
+      { word: "인기", meaning: "人気" }
+    ] },
+  { level: "5", hangul: "잠자코", katakana: "チャムジャコ", meaning: "黙って",
+    example: "잠자코 들었어요.", exampleKatakana: "チャムジャコ トゥロッソヨ", exampleMeaning: "黙って聞きました。",
+    breakdown: [
+      { word: "들었어요", meaning: "聞きました" }
+    ] },
+  { level: "5", hangul: "해고", katakana: "ヘゴ", meaning: "解雇",
+    example: "해고를 당했어요.", exampleKatakana: "ヘゴルル タンヘッソヨ", exampleMeaning: "解雇されました。",
+    breakdown: [
+      { word: "당했어요", meaning: "されました" }
+    ] },
+  { level: "5", hangul: "이성적", katakana: "イソンジョク", meaning: "理性的",
+    example: "이성적으로 판단해요.", exampleKatakana: "イソンジョグロ パンダネヨ", exampleMeaning: "理性的に判断します。",
+    breakdown: [
+      { word: "판단", meaning: "判断" }
+    ] },
+  { level: "5", hangul: "하교", katakana: "ハギョ", meaning: "下校",
+    example: "하교 시간이에요.", exampleKatakana: "ハギョ シガニエヨ", exampleMeaning: "下校時間です。",
+    breakdown: [
+      { word: "시간", meaning: "時間" }
+    ] },
+  { level: "5", hangul: "착용", katakana: "チャギョン", meaning: "着用",
+    example: "안전벨트를 착용해요.", exampleKatakana: "アンジョンベルトゥルル チャギョンヘヨ", exampleMeaning: "シートベルトを着用します。",
+    breakdown: [
+      { word: "안전벨트", meaning: "シートベルト" }
+    ] },
+  { level: "5", hangul: "내뱉다", katakana: "ネベッタ", meaning: "吐き捨てる",
+    example: "말을 내뱉어요.", exampleKatakana: "マルル ネベトヨ", exampleMeaning: "言葉を吐き捨てます。",
+    breakdown: [
+      { word: "말", meaning: "言葉" }
+    ] },
+  { level: "5", hangul: "전구", katakana: "チョング", meaning: "電球",
+    example: "전구를 갈아요.", exampleKatakana: "チョングルル カラヨ", exampleMeaning: "電球を交換します。",
+    breakdown: [
+      { word: "갈아요", meaning: "交換します" }
+    ] },
+  { level: "5", hangul: "재촉", katakana: "チェチョク", meaning: "催促",
+    example: "빨리 하라고 재촉해요.", exampleKatakana: "パルリ ハラゴ チェチョケヨ", exampleMeaning: "早くしろと催促します。",
+    breakdown: [
+      { word: "빨리", meaning: "早く" }
+    ] },
+  { level: "5", hangul: "특강", katakana: "トゥッカン", meaning: "特別講義",
+    example: "특강을 들어요.", exampleKatakana: "トゥッカンウル トゥロヨ", exampleMeaning: "特別講義を聞きます。",
+    breakdown: [
+      { word: "들어요", meaning: "聞きます" }
+    ] },
+  { level: "5", hangul: "신약", katakana: "シニャク", meaning: "新薬",
+    example: "신약을 개발해요.", exampleKatakana: "シニャグル ケバレヨ", exampleMeaning: "新薬を開発します。",
+    breakdown: [
+      { word: "개발", meaning: "開発" }
+    ] },
+  { level: "5", hangul: "의학", katakana: "ウィハク", meaning: "医学",
+    example: "의학을 공부해요.", exampleKatakana: "ウィハグル コンブヘヨ", exampleMeaning: "医学を勉強します。",
+    breakdown: [
+      { word: "공부", meaning: "勉強" }
+    ] },
+  { level: "5", hangul: "장바구니", katakana: "チャンバグニ", meaning: "買い物かご",
+    example: "장바구니에 담아요.", exampleKatakana: "チャンバグニエ タマヨ", exampleMeaning: "買い物かごに入れます。",
+    breakdown: [
+      { word: "담아요", meaning: "入れます" }
+    ] },
+  { level: "5", hangul: "하향", katakana: "ハヒャン", meaning: "下向き",
+    example: "하향 조정해요.", exampleKatakana: "ハヒャン チョジョンヘヨ", exampleMeaning: "下方修正します。",
+    breakdown: [
+      { word: "조정", meaning: "修正" }
+    ] },
+  { level: "5", hangul: "취사", katakana: "チュィサ", meaning: "炊事",
+    example: "취사가 가능해요.", exampleKatakana: "チュィサガ カヌンヘヨ", exampleMeaning: "炊事が可能です。",
+    breakdown: [
+      { word: "가능", meaning: "可能" }
+    ] },
+  { level: "5", hangul: "얼어붙다", katakana: "オロブッタ", meaning: "凍りつく",
+    example: "길이 얼어붙었어요.", exampleKatakana: "キリ オロブトッソヨ", exampleMeaning: "道が凍りつきました。",
+    breakdown: [
+      { word: "길", meaning: "道" }
+    ] },
+  { level: "5", hangul: "유효", katakana: "ユヒョ", meaning: "有効",
+    example: "티켓이 유효해요.", exampleKatakana: "ティケシ ユヒョヘヨ", exampleMeaning: "チケットが有効です。",
+    breakdown: [
+      { word: "티켓", meaning: "チケット" }
+    ] },
+  { level: "5", hangul: "해명", katakana: "ヘミョン", meaning: "釈明",
+    example: "해명을 해요.", exampleKatakana: "ヘミョンウル ヘヨ", exampleMeaning: "釈明します。",
+    breakdown: [
+      { word: "해요", meaning: "します" }
+    ] },
+  { level: "5", hangul: "가지런히", katakana: "カジロニ", meaning: "きちんと",
+    example: "신발을 가지런히 놓아요.", exampleKatakana: "シンバルル カジロニ ノアヨ", exampleMeaning: "靴をきちんと並べます。",
+    breakdown: [
+      { word: "신발", meaning: "靴" }
+    ] },
+  { level: "5", hangul: "산업화", katakana: "サノパ", meaning: "産業化",
+    example: "산업화가 진행돼요.", exampleKatakana: "サノパガ チンヘンドェヨ", exampleMeaning: "産業化が進みます。",
+    breakdown: [
+      { word: "진행", meaning: "進行" }
+    ] },
+  { level: "5", hangul: "색상", katakana: "セクサン", meaning: "色相",
+    example: "색상을 골라요.", exampleKatakana: "セクサンウル コルラヨ", exampleMeaning: "色を選びます。",
+    breakdown: [
+      { word: "골라요", meaning: "選びます" }
+    ] },
+  { level: "5", hangul: "소화기", katakana: "ソファギ", meaning: "消火器",
+    example: "소화기를 비치해요.", exampleKatakana: "ソファギルル ピチヘヨ", exampleMeaning: "消火器を備え付けます。",
+    breakdown: [
+      { word: "비치", meaning: "備え付け" }
+    ] },
+  { level: "5", hangul: "유심히", katakana: "ユシミ", meaning: "注意深く",
+    example: "유심히 관찰해요.", exampleKatakana: "ユシミ クァンチャレヨ", exampleMeaning: "注意深く観察します。",
+    breakdown: [
+      { word: "관찰", meaning: "観察" }
+    ] },
+  { level: "5", hangul: "풍년", katakana: "プンニョン", meaning: "豊年",
+    example: "풍년이 들었어요.", exampleKatakana: "プンニョニ トゥロッソヨ", exampleMeaning: "豊作になりました。",
+    breakdown: [
+      { word: "들었어요", meaning: "になりました" }
+    ] },
+  { level: "5", hangul: "사복", katakana: "サボク", meaning: "私服",
+    example: "사복을 입어요.", exampleKatakana: "サボグル イボヨ", exampleMeaning: "私服を着ます。",
+    breakdown: [
+      { word: "입어요", meaning: "着ます" }
+    ] },
+  { level: "5", hangul: "잡화", katakana: "チャプァ", meaning: "雑貨",
+    example: "잡화를 팔아요.", exampleKatakana: "チャプァルル パラヨ", exampleMeaning: "雑貨を売ります。",
+    breakdown: [
+      { word: "팔아요", meaning: "売ります" }
+    ] },
+  { level: "5", hangul: "판매량", katakana: "パンメリャン", meaning: "販売量",
+    example: "판매량이 늘었어요.", exampleKatakana: "パンメリャンイ ヌロッソヨ", exampleMeaning: "販売量が増えました。",
+    breakdown: [
+      { word: "늘었어요", meaning: "増えました" }
+    ] },
+  { level: "5", hangul: "채식", katakana: "チェシク", meaning: "菜食",
+    example: "채식을 해요.", exampleKatakana: "チェシグル ヘヨ", exampleMeaning: "菜食をします。",
+    breakdown: [
+      { word: "해요", meaning: "します" }
+    ] },
+  { level: "5", hangul: "날로", katakana: "ナルロ", meaning: "日増しに",
+    example: "날로 발전해요.", exampleKatakana: "ナルロ パルジョネヨ", exampleMeaning: "日増しに発展します。",
+    breakdown: [
+      { word: "발전", meaning: "発展" }
+    ] },
+  { level: "5", hangul: "갑갑하다", katakana: "カプカパダ", meaning: "息苦しい",
+    example: "방이 갑갑해요.", exampleKatakana: "パンイ カプカペヨ", exampleMeaning: "部屋が息苦しいです。",
+    breakdown: [
+      { word: "방", meaning: "部屋" }
+    ] },
+  { level: "5", hangul: "연금", katakana: "ヨングム", meaning: "年金",
+    example: "연금을 받아요.", exampleKatakana: "ヨングムル パダヨ", exampleMeaning: "年金をもらいます。",
+    breakdown: [
+      { word: "받아요", meaning: "もらいます" }
+    ] },
+  { level: "5", hangul: "탈퇴", katakana: "タルテ", meaning: "脱退",
+    example: "동아리를 탈퇴해요.", exampleKatakana: "トンアリルル タルテヘヨ", exampleMeaning: "サークルを脱退します。",
+    breakdown: [
+      { word: "동아리", meaning: "サークル" }
+    ] },
+  { level: "5", hangul: "시나리오", katakana: "シナリオ", meaning: "シナリオ",
+    example: "시나리오를 써요.", exampleKatakana: "シナリオルル ソヨ", exampleMeaning: "シナリオを書きます。",
+    breakdown: [
+      { word: "써요", meaning: "書きます" }
+    ] },
+  { level: "5", hangul: "쏘아보다", katakana: "ソアボダ", meaning: "にらむ",
+    example: "눈을 쏘아봐요.", exampleKatakana: "ヌヌル ソアバヨ", exampleMeaning: "目でにらみます。",
+    breakdown: [
+      { word: "눈", meaning: "目" }
+    ] },
+  { level: "5", hangul: "새파랗다", katakana: "セパラタ", meaning: "真っ青だ",
+    example: "하늘이 새파래요.", exampleKatakana: "ハヌリ セパレヨ", exampleMeaning: "空が真っ青です。",
+    breakdown: [
+      { word: "하늘", meaning: "空" }
+    ] },
+  { level: "5", hangul: "열렬하다", katakana: "ヨルリョラダ", meaning: "熱烈だ",
+    example: "열렬한 응원이에요.", exampleKatakana: "ヨルリョラン ウンウォニエヨ", exampleMeaning: "熱烈な応援です。",
+    breakdown: [
+      { word: "응원", meaning: "応援" }
+    ] },
+  { level: "5", hangul: "혼인", katakana: "ホニン", meaning: "婚姻",
+    example: "혼인 신고를 해요.", exampleKatakana: "ホニン シンゴルル ヘヨ", exampleMeaning: "婚姻届を出します。",
+    breakdown: [
+      { word: "신고", meaning: "届" }
+    ] },
+  { level: "5", hangul: "받치다", katakana: "パッチダ", meaning: "支える",
+    example: "우산을 받쳐요.", exampleKatakana: "ウサヌル パッチョヨ", exampleMeaning: "傘をさします。",
+    breakdown: [
+      { word: "우산", meaning: "傘" }
+    ] },
+  { level: "5", hangul: "액체", katakana: "エクチェ", meaning: "液体",
+    example: "액체 상태예요.", exampleKatakana: "エクチェ サンテエヨ", exampleMeaning: "液体の状態です。",
+    breakdown: [
+      { word: "상태", meaning: "状態" }
+    ] },
+  { level: "5", hangul: "태아", katakana: "テア", meaning: "胎児",
+    example: "태아가 건강해요.", exampleKatakana: "テアガ コンガンヘヨ", exampleMeaning: "胎児が健康です。",
+    breakdown: [
+      { word: "건강", meaning: "健康" }
+    ] },
+  { level: "5", hangul: "전시관", katakana: "チョンシグァン", meaning: "展示館",
+    example: "전시관을 관람해요.", exampleKatakana: "チョンシグァヌル クァルラメヨ", exampleMeaning: "展示館を観覧します。",
+    breakdown: [
+      { word: "관람", meaning: "観覧" }
+    ] },
+  { level: "5", hangul: "통신비", katakana: "トンシンビ", meaning: "通信費",
+    example: "통신비를 아껴요.", exampleKatakana: "トンシンビルル アッキョヨ", exampleMeaning: "通信費を節約します。",
+    breakdown: [
+      { word: "아껴요", meaning: "節約します" }
+    ] },
+  { level: "5", hangul: "통제", katakana: "トンジェ", meaning: "統制",
+    example: "교통을 통제해요.", exampleKatakana: "キョトンウル トンジェヘヨ", exampleMeaning: "交通を統制します。",
+    breakdown: [
+      { word: "교통", meaning: "交通" }
+    ] },
+  { level: "5", hangul: "치통", katakana: "チトン", meaning: "歯痛",
+    example: "치통이 심해요.", exampleKatakana: "チトンイ シメヨ", exampleMeaning: "歯痛がひどいです。",
+    breakdown: [
+      { word: "심해요", meaning: "ひどいです" }
+    ] },
+  { level: "5", hangul: "오케스트라", katakana: "オケストゥラ", meaning: "オーケストラ",
+    example: "오케스트라 공연이에요.", exampleKatakana: "オケストゥラ コンヨニエヨ", exampleMeaning: "オーケストラ公演です。",
+    breakdown: [
+      { word: "공연", meaning: "公演" }
+    ] },
+  { level: "5", hangul: "손꼽다", katakana: "ソンコプタ", meaning: "指折り数える",
+    example: "손꼽아 기다려요.", exampleKatakana: "ソンコパ キダリョヨ", exampleMeaning: "指折り数えて待ちます。",
+    breakdown: [
+      { word: "기다려요", meaning: "待ちます" }
+    ] },
+  { level: "5", hangul: "탓", katakana: "タッ", meaning: "せい",
+    example: "날씨 탓이에요.", exampleKatakana: "ナルシ タシエヨ", exampleMeaning: "天気のせいです。",
+    breakdown: [
+      { word: "날씨", meaning: "天気" }
+    ] },
+  { level: "5", hangul: "회상", katakana: "フェサン", meaning: "回想",
+    example: "옛날을 회상해요.", exampleKatakana: "イェンナルル フェサンヘヨ", exampleMeaning: "昔を回想します。",
+    breakdown: [
+      { word: "옛날", meaning: "昔" }
+    ] },
+  { level: "5", hangul: "비상약", katakana: "ピサンニャク", meaning: "常備薬",
+    example: "비상약을 챙겨요.", exampleKatakana: "ピサンニャグル チェンギョヨ", exampleMeaning: "常備薬を用意します。",
+    breakdown: [
+      { word: "챙겨요", meaning: "用意します" }
+    ] },
+  { level: "5", hangul: "선불", katakana: "ソンブル", meaning: "前払い",
+    example: "선불로 내요.", exampleKatakana: "ソンブルロ ネヨ", exampleMeaning: "前払いします。",
+    breakdown: [
+      { word: "내요", meaning: "払います" }
+    ] },
+  { level: "5", hangul: "트이다", katakana: "トゥイダ", meaning: "開ける",
+    example: "시야가 트여요.", exampleKatakana: "シヤガ トゥヨヨ", exampleMeaning: "視野が開けます。",
+    breakdown: [
+      { word: "시야", meaning: "視野" }
+    ] },
+  { level: "5", hangul: "야영", katakana: "ヤヨン", meaning: "野営",
+    example: "야영을 해요.", exampleKatakana: "ヤヨンウル ヘヨ", exampleMeaning: "キャンプをします。",
+    breakdown: [
+      { word: "해요", meaning: "します" }
+    ] },
+  { level: "5", hangul: "다급하다", katakana: "タグパダ", meaning: "切迫している",
+    example: "다급한 목소리예요.", exampleKatakana: "タグパン モクソリエヨ", exampleMeaning: "切迫した声です。",
+    breakdown: [
+      { word: "목소리", meaning: "声" }
+    ] },
+  { level: "5", hangul: "떠돌다", katakana: "トドルダ", meaning: "さまよう",
+    example: "소문이 떠돌아요.", exampleKatakana: "ソムニ トドラヨ", exampleMeaning: "噂が広まっています。",
+    breakdown: [
+      { word: "소문", meaning: "噂" }
+    ] },
+  { level: "5", hangul: "솟구치다", katakana: "ソックチダ", meaning: "湧き上がる",
+    example: "분노가 솟구쳐요.", exampleKatakana: "プンノガ ソックチョヨ", exampleMeaning: "怒りが湧き上がります。",
+    breakdown: [
+      { word: "분노", meaning: "怒り" }
+    ] },
+  { level: "5", hangul: "성향", katakana: "ソンヒャン", meaning: "性向",
+    example: "보수적인 성향이에요.", exampleKatakana: "ポスジョギン ソンヒャンイエヨ", exampleMeaning: "保守的な性向です。",
+    breakdown: [
+      { word: "보수적", meaning: "保守的" }
+    ] },
+  { level: "5", hangul: "위급하다", katakana: "ウィグパダ", meaning: "危急だ",
+    example: "위급한 상황이에요.", exampleKatakana: "ウィグパン サンファンイエヨ", exampleMeaning: "危急な状況です。",
+    breakdown: [
+      { word: "상황", meaning: "状況" }
+    ] },
+  { level: "5", hangul: "하찮다", katakana: "ハチャンタ", meaning: "取るに足りない",
+    example: "하찮은 일이에요.", exampleKatakana: "ハチャヌン イリエヨ", exampleMeaning: "取るに足りないことです。",
+    breakdown: [
+      { word: "일", meaning: "こと" }
+    ] },
+  { level: "5", hangul: "전환", katakana: "チョヌァン", meaning: "転換",
+    example: "방향을 전환해요.", exampleKatakana: "パンヒャンウル チョヌァネヨ", exampleMeaning: "方向を転換します。",
+    breakdown: [
+      { word: "방향", meaning: "方向" }
+    ] },
+  { level: "5", hangul: "간결하다", katakana: "カンギョラダ", meaning: "簡潔だ",
+    example: "간결하게 써요.", exampleKatakana: "カンギョラゲ ソヨ", exampleMeaning: "簡潔に書きます。",
+    breakdown: [
+      { word: "써요", meaning: "書きます" }
+    ] },
+  { level: "5", hangul: "빙하", katakana: "ピンハ", meaning: "氷河",
+    example: "빙하가 녹아요.", exampleKatakana: "ピンハガ ノガヨ", exampleMeaning: "氷河が溶けます。",
+    breakdown: [
+      { word: "녹아요", meaning: "溶けます" }
+    ] },
+  { level: "5", hangul: "솟아오르다", katakana: "ソダオルダ", meaning: "湧き上がる",
+    example: "해가 솟아올라요.", exampleKatakana: "ヘガ ソダオルラヨ", exampleMeaning: "太陽が昇ります。",
+    breakdown: [
+      { word: "해", meaning: "太陽" }
+    ] },
+  { level: "5", hangul: "취업률", katakana: "チュィオムニュル", meaning: "就職率",
+    example: "취업률이 높아요.", exampleKatakana: "チュィオムニュリ ノパヨ", exampleMeaning: "就職率が高いです。",
+    breakdown: [
+      { word: "높아요", meaning: "高いです" }
+    ] },
+  { level: "5", hangul: "상여금", katakana: "サンヨグム", meaning: "賞与金",
+    example: "상여금을 받아요.", exampleKatakana: "サンヨグムル パダヨ", exampleMeaning: "ボーナスをもらいます。",
+    breakdown: [
+      { word: "받아요", meaning: "もらいます" }
+    ] },
+  { level: "5", hangul: "재택", katakana: "チェテク", meaning: "在宅",
+    example: "재택근무를 해요.", exampleKatakana: "チェテクグンムルル ヘヨ", exampleMeaning: "在宅勤務をします。",
+    breakdown: [
+      { word: "근무", meaning: "勤務" }
+    ] },
+  { level: "5", hangul: "달리하다", katakana: "タルリハダ", meaning: "異にする",
+    example: "의견을 달리해요.", exampleKatakana: "ウィギョヌル タルリヘヨ", exampleMeaning: "意見を異にします。",
+    breakdown: [
+      { word: "의견", meaning: "意見" }
+    ] },
+  { level: "5", hangul: "애타다", katakana: "エタダ", meaning: "焦る",
+    example: "마음이 애타요.", exampleKatakana: "マウミ エタヨ", exampleMeaning: "心が焦ります。",
+    breakdown: [
+      { word: "마음", meaning: "心" }
+    ] },
+  { level: "5", hangul: "슬기롭다", katakana: "スルギロプタ", meaning: "賢い",
+    example: "슬기롭게 해결해요.", exampleKatakana: "スルギロプケ ヘギョレヨ", exampleMeaning: "賢く解決します。",
+    breakdown: [
+      { word: "해결", meaning: "解決" }
+    ] },
+  { level: "5", hangul: "되묻다", katakana: "トェムッタ", meaning: "聞き返す",
+    example: "다시 되물어요.", exampleKatakana: "タシ トェムロヨ", exampleMeaning: "もう一度聞き返します。",
+    breakdown: [
+      { word: "다시", meaning: "もう一度" }
+    ] },
+  { level: "5", hangul: "후기", katakana: "フギ", meaning: "後記・レビュー",
+    example: "후기를 남겨요.", exampleKatakana: "フギルル ナムギョヨ", exampleMeaning: "レビューを残します。",
+    breakdown: [
+      { word: "남겨요", meaning: "残します" }
+    ] },
+  { level: "5", hangul: "흠뻑", katakana: "フムポク", meaning: "びっしょり",
+    example: "비에 흠뻑 젖었어요.", exampleKatakana: "ピエ フムポク チョジョッソヨ", exampleMeaning: "雨にびっしょり濡れました。",
+    breakdown: [
+      { word: "젖었어요", meaning: "濡れました" }
+    ] },
+  { level: "5", hangul: "조직", katakana: "チョジク", meaning: "組織",
+    example: "조직을 만들어요.", exampleKatakana: "チョジグル マンドゥロヨ", exampleMeaning: "組織を作ります。",
+    breakdown: [
+      { word: "만들어요", meaning: "作ります" }
+    ] },
+  { level: "5", hangul: "애니메이션", katakana: "エニメイション", meaning: "アニメーション",
+    example: "애니메이션을 봐요.", exampleKatakana: "エニメイションウル バヨ", exampleMeaning: "アニメを見ます。",
+    breakdown: [
+      { word: "봐요", meaning: "見ます" }
+    ] },
+  { level: "5", hangul: "비유적", katakana: "ピユジョク", meaning: "比喩的",
+    example: "비유적인 표현이에요.", exampleKatakana: "ピユジョギン ピョヒョニエヨ", exampleMeaning: "比喩的な表現です。",
+    breakdown: [
+      { word: "표현", meaning: "表現" }
+    ] },
+  { level: "5", hangul: "자국", katakana: "チャグク", meaning: "跡",
+    example: "발자국이 남았어요.", exampleKatakana: "パルチャグギ ナマッソヨ", exampleMeaning: "足跡が残りました。",
+    breakdown: [
+      { word: "발", meaning: "足" }
+    ] },
+  { level: "5", hangul: "완공", katakana: "ワンゴン", meaning: "竣工",
+    example: "건물이 완공됐어요.", exampleKatakana: "コンムリ ワンゴンドェッソヨ", exampleMeaning: "建物が竣工しました。",
+    breakdown: [
+      { word: "건물", meaning: "建物" }
+    ] },
+  { level: "5", hangul: "밤낮없이", katakana: "パムナドプシ", meaning: "昼夜を問わず",
+    example: "밤낮없이 일해요.", exampleKatakana: "パムナドプシ イレヨ", exampleMeaning: "昼夜を問わず働きます。",
+    breakdown: [
+      { word: "일해요", meaning: "働きます" }
+    ] },
+  { level: "5", hangul: "신도시", katakana: "シンドシ", meaning: "新都市",
+    example: "신도시에 살아요.", exampleKatakana: "シンドシエ サラヨ", exampleMeaning: "新都市に住んでいます。",
+    breakdown: [
+      { word: "살아요", meaning: "住んでいます" }
+    ] },
+  { level: "5", hangul: "훌쩍", katakana: "フルチョク", meaning: "ひょいと",
+    example: "훌쩍 커버렸어요.", exampleKatakana: "フルチョク コボリョッソヨ", exampleMeaning: "ぐんと大きくなりました。",
+    breakdown: [
+      { word: "커버렸어요", meaning: "大きくなりました" }
+    ] },
+  { level: "5", hangul: "불우", katakana: "プル", meaning: "不遇",
+    example: "불우한 이웃을 도와요.", exampleKatakana: "プルアン イウスル トワヨ", exampleMeaning: "恵まれない隣人を助けます。",
+    breakdown: [
+      { word: "이웃", meaning: "隣人" }
+    ] },
+  { level: "5", hangul: "다다르다", katakana: "タダルダ", meaning: "至る",
+    example: "목적지에 다다라요.", exampleKatakana: "モクチョクチエ タダラヨ", exampleMeaning: "目的地に至ります。",
+    breakdown: [
+      { word: "목적지", meaning: "目的地" }
+    ] },
+  { level: "5", hangul: "충족", katakana: "チュンジョク", meaning: "充足",
+    example: "조건을 충족해요.", exampleKatakana: "チョゴヌル チュンジョケヨ", exampleMeaning: "条件を充足します。",
+    breakdown: [
+      { word: "조건", meaning: "条件" }
+    ] },
+  { level: "5", hangul: "경쾌하다", katakana: "キョンクェハダ", meaning: "軽快だ",
+    example: "경쾌한 음악이에요.", exampleKatakana: "キョンクェハン ウマギエヨ", exampleMeaning: "軽快な音楽です。",
+    breakdown: [
+      { word: "음악", meaning: "音楽" }
+    ] },
+  { level: "5", hangul: "샘", katakana: "セム", meaning: "泉",
+    example: "샘물을 마셔요.", exampleKatakana: "セムムルル マショヨ", exampleMeaning: "泉の水を飲みます。",
+    breakdown: [
+      { word: "물", meaning: "水" }
+    ] },
+  { level: "5", hangul: "수줍음", katakana: "スジュブム", meaning: "恥ずかしがり",
+    example: "수줍음이 많아요.", exampleKatakana: "スジュブミ マナヨ", exampleMeaning: "恥ずかしがり屋です。",
+    breakdown: [
+      { word: "많아요", meaning: "多いです" }
+    ] },
+  { level: "5", hangul: "거세다", katakana: "コセダ", meaning: "激しい",
+    example: "바람이 거세요.", exampleKatakana: "パラミ コセヨ", exampleMeaning: "風が激しいです。",
+    breakdown: [
+      { word: "바람", meaning: "風" }
+    ] },
+  { level: "5", hangul: "절벽", katakana: "チョルビョク", meaning: "絶壁",
+    example: "절벽에서 떨어져요.", exampleKatakana: "チョルビョゲソ トロジョヨ", exampleMeaning: "絶壁から落ちます。",
+    breakdown: [
+      { word: "떨어져요", meaning: "落ちます" }
+    ] },
+  { level: "5", hangul: "앞지르다", katakana: "アプチルダ", meaning: "追い越す",
+    example: "앞차를 앞질러요.", exampleKatakana: "アプチャルル アプチルロヨ", exampleMeaning: "前の車を追い越します。",
+    breakdown: [
+      { word: "앞차", meaning: "前の車" }
+    ] },
+  { level: "5", hangul: "불가사의", katakana: "プルガサウィ", meaning: "不可思議",
+    example: "불가사의한 일이에요.", exampleKatakana: "プルガサウィハン イリエヨ", exampleMeaning: "不可思議なことです。",
+    breakdown: [
+      { word: "일", meaning: "こと" }
+    ] },
+  { level: "5", hangul: "불의", katakana: "プルイ", meaning: "不義",
+    example: "불의를 참지 않아요.", exampleKatakana: "プルイルル チャムジ アナヨ", exampleMeaning: "不義を許しません。",
+    breakdown: [
+      { word: "참지", meaning: "許しません" }
+    ] },
+  { level: "5", hangul: "힘주다", katakana: "ヒムジュダ", meaning: "力を入れる",
+    example: "다리에 힘줘요.", exampleKatakana: "タリエ ヒムジョヨ", exampleMeaning: "足に力を入れます。",
+    breakdown: [
+      { word: "다리", meaning: "足" }
+    ] },
+  { level: "5", hangul: "중개", katakana: "チュンゲ", meaning: "仲介",
+    example: "부동산 중개예요.", exampleKatakana: "プドンサン チュンゲエヨ", exampleMeaning: "不動産仲介です。",
+    breakdown: [
+      { word: "부동산", meaning: "不動産" }
+    ] },
+  { level: "5", hangul: "나돌다", katakana: "ナドルダ", meaning: "出回る",
+    example: "소문이 나돌아요.", exampleKatakana: "ソムニ ナドラヨ", exampleMeaning: "噂が出回っています。",
+    breakdown: [
+      { word: "소문", meaning: "噂" }
+    ] },
+  { level: "5", hangul: "번번이", katakana: "ポンボニ", meaning: "毎回",
+    example: "번번이 실패해요.", exampleKatakana: "ポンボニ シルペヘヨ", exampleMeaning: "毎回失敗します。",
+    breakdown: [
+      { word: "실패", meaning: "失敗" }
+    ] },
+  { level: "5", hangul: "질기다", katakana: "チルギダ", meaning: "丈夫だ",
+    example: "고기가 질겨요.", exampleKatakana: "コギガ チルギョヨ", exampleMeaning: "肉が硬いです。",
+    breakdown: [
+      { word: "고기", meaning: "肉" }
+    ] },
+  { level: "5", hangul: "청색", katakana: "チョンセク", meaning: "青色",
+    example: "청색 신호예요.", exampleKatakana: "チョンセク シノエヨ", exampleMeaning: "青信号です。",
+    breakdown: [
+      { word: "신호", meaning: "信号" }
+    ] },
+  { level: "5", hangul: "조종사", katakana: "チョジョンサ", meaning: "操縦士",
+    example: "비행기 조종사예요.", exampleKatakana: "ピヘンギ チョジョンサエヨ", exampleMeaning: "飛行機の操縦士です。",
+    breakdown: [
+      { word: "비행기", meaning: "飛行機" }
+    ] },
+  { level: "5", hangul: "충실", katakana: "チュンシル", meaning: "忠実",
+    example: "맡은 일에 충실해요.", exampleKatakana: "マトゥン イレ チュンシレヨ", exampleMeaning: "任された仕事に忠実です。",
+    breakdown: [
+      { word: "맡은", meaning: "任された" }
+    ] },
+  { level: "5", hangul: "실화", katakana: "シルファ", meaning: "実話",
+    example: "실화를 바탕으로 해요.", exampleKatakana: "シルファルル パタンウロ ヘヨ", exampleMeaning: "実話を基にします。",
+    breakdown: [
+      { word: "바탕", meaning: "基" }
+    ] },
+  { level: "5", hangul: "출력", katakana: "チュルリョク", meaning: "出力",
+    example: "출력을 눌러요.", exampleKatakana: "チュルリョグル ヌルロヨ", exampleMeaning: "印刷を押します。",
+    breakdown: [
+      { word: "눌러요", meaning: "押します" }
+    ] },
+  { level: "5", hangul: "몰두하다", katakana: "モルドゥハダ", meaning: "没頭する",
+    example: "일에 몰두해요.", exampleKatakana: "イレ モルドゥヘヨ", exampleMeaning: "仕事に没頭します。",
+    breakdown: [
+      { word: "일", meaning: "仕事" }
+    ] },
+  { level: "5", hangul: "훤히", katakana: "フォニ", meaning: "明るく",
+    example: "훤히 알고 있어요.", exampleKatakana: "フォニ アルゴ イッソヨ", exampleMeaning: "はっきりと知っています。",
+    breakdown: [
+      { word: "알고", meaning: "知って" }
+    ] },
+  { level: "5", hangul: "황색", katakana: "ファンセク", meaning: "黄色",
+    example: "황색 경고예요.", exampleKatakana: "ファンセク キョンゴエヨ", exampleMeaning: "黄色警告です。",
+    breakdown: [
+      { word: "경고", meaning: "警告" }
+    ] },
+  { level: "5", hangul: "의료", katakana: "ウィリョ", meaning: "医療",
+    example: "의료 서비스예요.", exampleKatakana: "ウィリョ ソビスエヨ", exampleMeaning: "医療サービスです。",
+    breakdown: [
+      { word: "서비스", meaning: "サービス" }
+    ] },
+  { level: "5", hangul: "패하다", katakana: "ペハダ", meaning: "敗れる",
+    example: "경기에서 패했어요.", exampleKatakana: "キョンギエソ ペヘッソヨ", exampleMeaning: "試合で敗れました。",
+    breakdown: [
+      { word: "경기", meaning: "試合" }
+    ] },
+  { level: "5", hangul: "효녀", katakana: "ヒョニョ", meaning: "孝行娘",
+    example: "효녀예요.", exampleKatakana: "ヒョニョエヨ", exampleMeaning: "孝行娘です。",
+    breakdown: [
+      { word: "예요", meaning: "です" }
+    ] },
+  { level: "5", hangul: "시체", katakana: "シチェ", meaning: "死体",
+    example: "시체를 발견했어요.", exampleKatakana: "シチェルル パルギョネッソヨ", exampleMeaning: "死体を発見しました。",
+    breakdown: [
+      { word: "발견", meaning: "発見" }
+    ] },
+  { level: "5", hangul: "삭막하다", katakana: "サクマカダ", meaning: "荒涼としている",
+    example: "삭막한 풍경이에요.", exampleKatakana: "サクマカン プンギョンイエヨ", exampleMeaning: "荒涼とした風景です。",
+    breakdown: [
+      { word: "풍경", meaning: "風景" }
+    ] },
+  { level: "5", hangul: "불치병", katakana: "プルチビョン", meaning: "不治の病",
+    example: "불치병에 걸렸어요.", exampleKatakana: "プルチビョンエ コルリョッソヨ", exampleMeaning: "不治の病にかかりました。",
+    breakdown: [
+      { word: "걸렸어요", meaning: "かかりました" }
+    ] },
+  { level: "5", hangul: "베다", katakana: "ペダ", meaning: "切る",
+    example: "나무를 베어요.", exampleKatakana: "ナムルル ペオヨ", exampleMeaning: "木を切ります。",
+    breakdown: [
+      { word: "나무", meaning: "木" }
+    ] },
+  { level: "5", hangul: "위법", katakana: "ウィボプ", meaning: "違法",
+    example: "위법 행위예요.", exampleKatakana: "ウィボプ ヘンウィエヨ", exampleMeaning: "違法行為です。",
+    breakdown: [
+      { word: "행위", meaning: "行為" }
+    ] },
+  { level: "5", hangul: "체육", katakana: "チェユク", meaning: "体育",
+    example: "체육 시간이에요.", exampleKatakana: "チェユク シガニエヨ", exampleMeaning: "体育の時間です。",
+    breakdown: [
+      { word: "시간", meaning: "時間" }
+    ] },
+  { level: "5", hangul: "첨가", katakana: "チョムガ", meaning: "添加",
+    example: "첨가물이 없어요.", exampleKatakana: "チョムガムリ オプソヨ", exampleMeaning: "添加物がありません。",
+    breakdown: [
+      { word: "없어요", meaning: "ありません" }
+    ] },
+  { level: "5", hangul: "우울증", katakana: "ウウルチュン", meaning: "うつ病",
+    example: "우울증에 걸렸어요.", exampleKatakana: "ウウルチュンエ コルリョッソヨ", exampleMeaning: "うつ病にかかりました。",
+    breakdown: [
+      { word: "걸렸어요", meaning: "かかりました" }
+    ] },
+  { level: "5", hangul: "흐뭇하다", katakana: "フムタダ", meaning: "満足だ",
+    example: "마음이 흐뭇해요.", exampleKatakana: "マウミ フムテヨ", exampleMeaning: "心が満たされます。",
+    breakdown: [
+      { word: "마음", meaning: "心" }
+    ] },
+  { level: "5", hangul: "선천적", katakana: "ソンチョンジョク", meaning: "先天的",
+    example: "선천적인 재능이에요.", exampleKatakana: "ソンチョンジョギン ジェヌンイエヨ", exampleMeaning: "先天的な才能です。",
+    breakdown: [
+      { word: "재능", meaning: "才能" }
+    ] },
+  { level: "5", hangul: "엄살", katakana: "オムサル", meaning: "大げさに痛がること",
+    example: "엄살 부리지 마세요.", exampleKatakana: "オムサル プリジ マセヨ", exampleMeaning: "大げさにしないでください。",
+    breakdown: [
+      { word: "부리지", meaning: "しないで" }
+    ] },
+  { level: "5", hangul: "유래", katakana: "ユレ", meaning: "由来",
+    example: "이름의 유래예요.", exampleKatakana: "イルメ ユレエヨ", exampleMeaning: "名前の由来です。",
+    breakdown: [
+      { word: "이름", meaning: "名前" }
+    ] },
+  { level: "5", hangul: "출간", katakana: "チュルガン", meaning: "出版",
+    example: "책을 출간해요.", exampleKatakana: "チェグル チュルガネヨ", exampleMeaning: "本を出版します。",
+    breakdown: [
+      { word: "책", meaning: "本" }
+    ] },
+  { level: "5", hangul: "활약", katakana: "ファリャク", meaning: "活躍",
+    example: "선수가 활약해요.", exampleKatakana: "ソンスガ ファリャケヨ", exampleMeaning: "選手が活躍します。",
+    breakdown: [
+      { word: "선수", meaning: "選手" }
+    ] },
+  { level: "5", hangul: "충전", katakana: "チュンジョン", meaning: "充電",
+    example: "휴대폰을 충전해요.", exampleKatakana: "ヒュデポヌル チュンジョネヨ", exampleMeaning: "携帯を充電します。",
+    breakdown: [
+      { word: "휴대폰", meaning: "携帯" }
+    ] },
+  { level: "5", hangul: "일화", katakana: "イルファ", meaning: "逸話",
+    example: "재미있는 일화예요.", exampleKatakana: "チェミイヌン イルファエヨ", exampleMeaning: "面白い逸話です。",
+    breakdown: [
+      { word: "재미있는", meaning: "面白い" }
+    ] },
+  { level: "5", hangul: "내쉬다", katakana: "ネスィダ", meaning: "吐く",
+    example: "숨을 내쉬어요.", exampleKatakana: "スムル ネスィオヨ", exampleMeaning: "息を吐きます。",
+    breakdown: [
+      { word: "숨", meaning: "息" }
+    ] },
+  { level: "5", hangul: "잇몸", katakana: "インモム", meaning: "歯茎",
+    example: "잇몸이 아파요.", exampleKatakana: "インモミ アパヨ", exampleMeaning: "歯茎が痛いです。",
+    breakdown: [
+      { word: "아파요", meaning: "痛いです" }
+    ] },
+  { level: "5", hangul: "삼가다", katakana: "サムガダ", meaning: "慎む",
+    example: "말을 삼가요.", exampleKatakana: "マルル サムガヨ", exampleMeaning: "言葉を慎みます。",
+    breakdown: [
+      { word: "말", meaning: "言葉" }
+    ] },
+  { level: "5", hangul: "응답자", katakana: "ウンダプチャ", meaning: "回答者",
+    example: "응답자예요.", exampleKatakana: "ウンダプチャエヨ", exampleMeaning: "回答者です。",
+    breakdown: [
+      { word: "예요", meaning: "です" }
+    ] },
+  { level: "5", hangul: "정월", katakana: "チョンウォル", meaning: "正月",
+    example: "정월 초하루예요.", exampleKatakana: "チョンウォル チョハルエヨ", exampleMeaning: "正月一日です。",
+    breakdown: [
+      { word: "초하루", meaning: "一日" }
+    ] },
+  { level: "5", hangul: "저학력", katakana: "チョハンニョク", meaning: "低学歴",
+    example: "저학력자예요.", exampleKatakana: "チョハンニョクチャエヨ", exampleMeaning: "低学歴者です。",
+    breakdown: [
+      { word: "자", meaning: "者" }
+    ] },
+  { level: "5", hangul: "읊다", katakana: "ウプタ", meaning: "詠む",
+    example: "시를 읊어요.", exampleKatakana: "シルル ウルポヨ", exampleMeaning: "詩を詠みます。",
+    breakdown: [
+      { word: "시", meaning: "詩" }
+    ] },
+  { level: "5", hangul: "불과하다", katakana: "プルグァハダ", meaning: "過ぎない",
+    example: "십 분에 불과해요.", exampleKatakana: "シプ プネ プルグァヘヨ", exampleMeaning: "10分に過ぎません。",
+    breakdown: [
+      { word: "십 분", meaning: "10分" }
+    ] },
+  { level: "5", hangul: "맞들다", katakana: "マットゥルダ", meaning: "一緒に持つ",
+    example: "짐을 맞들어요.", exampleKatakana: "チムル マットゥロヨ", exampleMeaning: "荷物を一緒に持ちます。",
+    breakdown: [
+      { word: "짐", meaning: "荷物" }
+    ] },
+  { level: "5", hangul: "부유층", katakana: "プユチュン", meaning: "富裕層",
+    example: "부유층이에요.", exampleKatakana: "プユチュンイエヨ", exampleMeaning: "富裕層です。",
+    breakdown: [
+      { word: "이에요", meaning: "です" }
+    ] },
+  { level: "5", hangul: "매끄럽다", katakana: "メクロプタ", meaning: "滑らかだ",
+    example: "피부가 매끄러워요.", exampleKatakana: "ピブガ メクロウォヨ", exampleMeaning: "肌が滑らかです。",
+    breakdown: [
+      { word: "피부", meaning: "肌" }
+    ] },
+  { level: "5", hangul: "회원국", katakana: "フェウォングク", meaning: "加盟国",
+    example: "회원국이에요.", exampleKatakana: "フェウォングギエヨ", exampleMeaning: "加盟国です。",
+    breakdown: [
+      { word: "이에요", meaning: "です" }
+    ] },
+  { level: "5", hangul: "요원", katakana: "ヨウォン", meaning: "要員",
+    example: "비밀 요원이에요.", exampleKatakana: "ピミル ヨウォニエヨ", exampleMeaning: "秘密要員です。",
+    breakdown: [
+      { word: "비밀", meaning: "秘密" }
+    ] },
+  { level: "5", hangul: "첫차", katakana: "チョッチャ", meaning: "始発",
+    example: "첫차를 타요.", exampleKatakana: "チョッチャルル タヨ", exampleMeaning: "始発に乗ります。",
+    breakdown: [
+      { word: "타요", meaning: "乗ります" }
+    ] },
+  { level: "5", hangul: "집중력", katakana: "チプチュンニョク", meaning: "集中力",
+    example: "집중력이 좋아요.", exampleKatakana: "チプチュンニョギ チョアヨ", exampleMeaning: "集中力がいいです。",
+    breakdown: [
+      { word: "좋아요", meaning: "いいです" }
+    ] },
+  { level: "5", hangul: "패션쇼", katakana: "ペショニョ", meaning: "ファッションショー",
+    example: "패션쇼를 봐요.", exampleKatakana: "ペショニョルル バヨ", exampleMeaning: "ファッションショーを見ます。",
+    breakdown: [
+      { word: "봐요", meaning: "見ます" }
+    ] },
+  { level: "5", hangul: "혼례", katakana: "ホルレ", meaning: "婚礼",
+    example: "혼례를 치러요.", exampleKatakana: "ホルレルル チロヨ", exampleMeaning: "婚礼を執り行います。",
+    breakdown: [
+      { word: "치러요", meaning: "執り行います" }
+    ] },
+  { level: "5", hangul: "자원봉사자", katakana: "チャウォンボンサジャ", meaning: "ボランティア",
+    example: "자원봉사자예요.", exampleKatakana: "チャウォンボンサジャエヨ", exampleMeaning: "ボランティアです。",
+    breakdown: [
+      { word: "예요", meaning: "です" }
+    ] },
+  { level: "5", hangul: "애용", katakana: "エヨン", meaning: "愛用",
+    example: "이 제품을 애용해요.", exampleKatakana: "イ ジェプムル エヨンヘヨ", exampleMeaning: "この製品を愛用します。",
+    breakdown: [
+      { word: "제품", meaning: "製品" }
+    ] },
+  { level: "5", hangul: "사유", katakana: "サユ", meaning: "事由・思惟",
+    example: "사유를 밝혀요.", exampleKatakana: "サユルル パルキョヨ", exampleMeaning: "事由を明らかにします。",
+    breakdown: [
+      { word: "밝혀요", meaning: "明らかにします" }
+    ] },
+  { level: "5", hangul: "원화", katakana: "ウォヌァ", meaning: "ウォン貨",
+    example: "원화로 환전해요.", exampleKatakana: "ウォヌァロ ファンジョネヨ", exampleMeaning: "ウォンに両替します。",
+    breakdown: [
+      { word: "환전", meaning: "両替" }
+    ] },
+  { level: "5", hangul: "상실", katakana: "サンシル", meaning: "喪失",
+    example: "기억을 상실해요.", exampleKatakana: "キオグル サンシレヨ", exampleMeaning: "記憶を喪失します。",
+    breakdown: [
+      { word: "기억", meaning: "記憶" }
+    ] },
+  { level: "5", hangul: "참가자", katakana: "チャムガジャ", meaning: "参加者",
+    example: "참가자가 많아요.", exampleKatakana: "チャムガジャガ マナヨ", exampleMeaning: "参加者が多いです。",
+    breakdown: [
+      { word: "많아요", meaning: "多いです" }
+    ] },
+  { level: "5", hangul: "투명", katakana: "トゥミョン", meaning: "透明",
+    example: "투명한 유리예요.", exampleKatakana: "トゥミョンハン ユリエヨ", exampleMeaning: "透明なガラスです。",
+    breakdown: [
+      { word: "유리", meaning: "ガラス" }
+    ] },
+  { level: "5", hangul: "쪼개다", katakana: "チョゲダ", meaning: "割る",
+    example: "나무를 쪼개요.", exampleKatakana: "ナムルル チョゲヨ", exampleMeaning: "木を割ります。",
+    breakdown: [
+      { word: "나무", meaning: "木" }
+    ] },
+  { level: "5", hangul: "우르르", katakana: "ウルル", meaning: "どっと",
+    example: "사람들이 우르르 몰려와요.", exampleKatakana: "サラムドゥリ ウルル モルリョワヨ", exampleMeaning: "人々がどっと押し寄せます。",
+    breakdown: [
+      { word: "사람들", meaning: "人々" }
+    ] },
+  { level: "5", hangul: "정전", katakana: "チョンジョン", meaning: "停電",
+    example: "정전이 됐어요.", exampleKatakana: "チョンジョニ ドェッソヨ", exampleMeaning: "停電になりました。",
+    breakdown: [
+      { word: "됐어요", meaning: "なりました" }
+    ] },
+  { level: "5", hangul: "환갑", katakana: "ファンガプ", meaning: "還暦",
+    example: "환갑 잔치예요.", exampleKatakana: "ファンガプ チャンチエヨ", exampleMeaning: "還暦の祝いです。",
+    breakdown: [
+      { word: "잔치", meaning: "祝い" }
+    ] },
+  { level: "5", hangul: "환기", katakana: "ファンギ", meaning: "換気",
+    example: "창문을 열어 환기해요.", exampleKatakana: "チャンムヌル ヨロ ファンギヘヨ", exampleMeaning: "窓を開けて換気します。",
+    breakdown: [
+      { word: "창문", meaning: "窓" }
+    ] },
+  { level: "5", hangul: "흑색", katakana: "フクセク", meaning: "黒色",
+    example: "흑색 옷이에요.", exampleKatakana: "フクセク オシエヨ", exampleMeaning: "黒色の服です。",
+    breakdown: [
+      { word: "옷", meaning: "服" }
+    ] },
+  { level: "5", hangul: "벌겋다", katakana: "ポルゴタ", meaning: "真っ赤だ",
+    example: "얼굴이 벌게요.", exampleKatakana: "オルグリ ポルゲヨ", exampleMeaning: "顔が真っ赤です。",
+    breakdown: [
+      { word: "얼굴", meaning: "顔" }
+    ] },
+  { level: "5", hangul: "언론인", katakana: "オルロニン", meaning: "言論人",
+    example: "언론인이에요.", exampleKatakana: "オルロニニエヨ", exampleMeaning: "言論人です。",
+    breakdown: [
+      { word: "이에요", meaning: "です" }
+    ] },
+  { level: "5", hangul: "이면지", katakana: "イミョンジ", meaning: "裏紙",
+    example: "이면지를 써요.", exampleKatakana: "イミョンジルル ソヨ", exampleMeaning: "裏紙を使います。",
+    breakdown: [
+      { word: "써요", meaning: "使います" }
+    ] },
+  { level: "5", hangul: "제값", katakana: "チェガプ", meaning: "正当な値段",
+    example: "제값을 받아요.", exampleKatakana: "チェガプスル パダヨ", exampleMeaning: "正当な値段をもらいます。",
+    breakdown: [
+      { word: "받아요", meaning: "もらいます" }
+    ] },
+  { level: "5", hangul: "한방", katakana: "ハンバン", meaning: "一発",
+    example: "한방에 끝냈어요.", exampleKatakana: "ハンバンエ クンネッソヨ", exampleMeaning: "一発で終わらせました。",
+    breakdown: [
+      { word: "끝냈어요", meaning: "終わらせました" }
+    ] },
+  { level: "5", hangul: "커플", katakana: "コプル", meaning: "カップル",
+    example: "커플이에요.", exampleKatakana: "コプリエヨ", exampleMeaning: "カップルです。",
+    breakdown: [
+      { word: "이에요", meaning: "です" }
+    ] },
+  { level: "5", hangul: "사납다", katakana: "サナプタ", meaning: "荒い",
+    example: "날씨가 사나워요.", exampleKatakana: "ナルシガ サナウォヨ", exampleMeaning: "天気が荒れています。",
+    breakdown: [
+      { word: "날씨", meaning: "天気" }
+    ] },
+  { level: "5", hangul: "언짢다", katakana: "オンチャンタ", meaning: "気に食わない",
+    example: "기분이 언짢아요.", exampleKatakana: "キブニ オンチャナヨ", exampleMeaning: "気分が悪いです。",
+    breakdown: [
+      { word: "기분", meaning: "気分" }
+    ] },
+  { level: "5", hangul: "네모나다", katakana: "ネモナダ", meaning: "四角い",
+    example: "네모난 상자예요.", exampleKatakana: "ネモナン サンジャエヨ", exampleMeaning: "四角い箱です。",
+    breakdown: [
+      { word: "상자", meaning: "箱" }
+    ] },
+  { level: "5", hangul: "한차례", katakana: "ハンチャレ", meaning: "一度",
+    example: "한차례 비가 왔어요.", exampleKatakana: "ハンチャレ ピガ ワッソヨ", exampleMeaning: "一度雨が降りました。",
+    breakdown: [
+      { word: "비", meaning: "雨" }
+    ] },
+  { level: "5", hangul: "어찌", katakana: "オッチ", meaning: "どう",
+    example: "어찌 할 바를 몰라요.", exampleKatakana: "オッチ ハル バルル モルラヨ", exampleMeaning: "どうすればいいか分かりません。",
+    breakdown: [
+      { word: "할", meaning: "すれば" }
+    ] },
+  { level: "5", hangul: "때우다", katakana: "テウダ", meaning: "済ませる",
+    example: "끼니를 때워요.", exampleKatakana: "キニルル テウォヨ", exampleMeaning: "食事を済ませます。",
+    breakdown: [
+      { word: "끼니", meaning: "食事" }
+    ] },
+  { level: "5", hangul: "엉엉", katakana: "オンオン", meaning: "わあわあ",
+    example: "엉엉 울어요.", exampleKatakana: "オンオン ウロヨ", exampleMeaning: "わあわあ泣きます。",
+    breakdown: [
+      { word: "울어요", meaning: "泣きます" }
+    ] },
+  { level: "5", hangul: "이륙", katakana: "イリュク", meaning: "離陸",
+    example: "비행기가 이륙해요.", exampleKatakana: "ピヘンギガ イリュケヨ", exampleMeaning: "飛行機が離陸します。",
+    breakdown: [
+      { word: "비행기", meaning: "飛行機" }
+    ] },
+  { level: "5", hangul: "석탄", katakana: "ソクタン", meaning: "石炭",
+    example: "석탄을 캐요.", exampleKatakana: "ソクタヌル ケヨ", exampleMeaning: "石炭を掘ります。",
+    breakdown: [
+      { word: "캐요", meaning: "掘ります" }
+    ] },
+  { level: "5", hangul: "호소", katakana: "ホソ", meaning: "訴え",
+    example: "도움을 호소해요.", exampleKatakana: "トウムル ホソヘヨ", exampleMeaning: "助けを訴えます。",
+    breakdown: [
+      { word: "도움", meaning: "助け" }
+    ] },
+  { level: "5", hangul: "사무적", katakana: "サムジョク", meaning: "事務的",
+    example: "사무적인 태도예요.", exampleKatakana: "サムジョギン テドエヨ", exampleMeaning: "事務的な態度です。",
+    breakdown: [
+      { word: "태도", meaning: "態度" }
+    ] },
+  { level: "5", hangul: "눈치채다", katakana: "ヌンチチェダ", meaning: "気づく",
+    example: "거짓말을 눈치챘어요.", exampleKatakana: "コジンマルル ヌンチチェッソヨ", exampleMeaning: "嘘に気づきました。",
+    breakdown: [
+      { word: "거짓말", meaning: "嘘" }
+    ] },
+  { level: "5", hangul: "지표", katakana: "チピョ", meaning: "指標",
+    example: "경제 지표예요.", exampleKatakana: "キョンジェ チピョエヨ", exampleMeaning: "経済指標です。",
+    breakdown: [
+      { word: "경제", meaning: "経済" }
+    ] },
+  { level: "5", hangul: "진공청소기", katakana: "チンゴンチョンソギ", meaning: "掃除機",
+    example: "진공청소기로 청소해요.", exampleKatakana: "チンゴンチョンソギロ チョンソヘヨ", exampleMeaning: "掃除機で掃除します。",
+    breakdown: [
+      { word: "청소", meaning: "掃除" }
+    ] },
+  { level: "5", hangul: "비리", katakana: "ピリ", meaning: "不正",
+    example: "비리를 저질러요.", exampleKatakana: "ピリルル チョジルロヨ", exampleMeaning: "不正を犯します。",
+    breakdown: [
+      { word: "저질러요", meaning: "犯します" }
+    ] },
+  { level: "5", hangul: "아이디", katakana: "アイディ", meaning: "ID",
+    example: "아이디를 만들어요.", exampleKatakana: "アイディルル マンドゥロヨ", exampleMeaning: "IDを作ります。",
+    breakdown: [
+      { word: "만들어요", meaning: "作ります" }
+    ] },
+  { level: "5", hangul: "학번", katakana: "ハクボン", meaning: "学籍番号",
+    example: "학번이 뭐예요?", exampleKatakana: "ハクボニ モエヨ", exampleMeaning: "学籍番号は何ですか。",
+    breakdown: [
+      { word: "뭐예요", meaning: "何ですか" }
+    ] },
+  { level: "5", hangul: "파묻히다", katakana: "パムチダ", meaning: "埋もれる",
+    example: "눈에 파묻혔어요.", exampleKatakana: "ヌネ パムチョッソヨ", exampleMeaning: "雪に埋もれました。",
+    breakdown: [
+      { word: "눈", meaning: "雪" }
+    ] },
+  { level: "5", hangul: "매섭다", katakana: "メソプタ", meaning: "厳しい",
+    example: "날씨가 매서워요.", exampleKatakana: "ナルシガ メソウォヨ", exampleMeaning: "天気が厳しいです。",
+    breakdown: [
+      { word: "날씨", meaning: "天気" }
+    ] },
+  { level: "5", hangul: "스탠드", katakana: "スデンドゥ", meaning: "スタンド",
+    example: "스탠드를 켜요.", exampleKatakana: "スデンドゥルル キョヨ", exampleMeaning: "スタンドをつけます。",
+    breakdown: [
+      { word: "켜요", meaning: "つけます" }
+    ] },
+  { level: "5", hangul: "주식회사", katakana: "チュシクフェサ", meaning: "株式会社",
+    example: "주식회사예요.", exampleKatakana: "チュシクフェサエヨ", exampleMeaning: "株式会社です。",
+    breakdown: [
+      { word: "예요", meaning: "です" }
+    ] },
+  { level: "5", hangul: "간간이", katakana: "カンガニ", meaning: "時々",
+    example: "간간이 비가 와요.", exampleKatakana: "カンガニ ピガ ワヨ", exampleMeaning: "時々雨が降ります。",
+    breakdown: [
+      { word: "비", meaning: "雨" }
+    ] },
+  { level: "5", hangul: "시립", katakana: "シリプ", meaning: "市立",
+    example: "시립 도서관이에요.", exampleKatakana: "シリプ トソグァニエヨ", exampleMeaning: "市立図書館です。",
+    breakdown: [
+      { word: "도서관", meaning: "図書館" }
+    ] },
+  { level: "5", hangul: "납작하다", katakana: "ナプチャカダ", meaning: "平べったい",
+    example: "납작한 접시예요.", exampleKatakana: "ナプチャカン チョプシエヨ", exampleMeaning: "平べったい皿です。",
+    breakdown: [
+      { word: "접시", meaning: "皿" }
+    ] },
+  { level: "5", hangul: "침략", katakana: "チムニャク", meaning: "侵略",
+    example: "나라를 침략해요.", exampleKatakana: "ナラルル チムニャケヨ", exampleMeaning: "国を侵略します。",
+    breakdown: [
+      { word: "나라", meaning: "国" }
+    ] },
+  { level: "5", hangul: "출시", katakana: "チュルシ", meaning: "発売",
+    example: "신제품이 출시돼요.", exampleKatakana: "シンジェプミ チュルシドェヨ", exampleMeaning: "新製品が発売されます。",
+    breakdown: [
+      { word: "신제품", meaning: "新製品" }
+    ] },
+  { level: "5", hangul: "중개인", katakana: "チュンゲイン", meaning: "仲介人",
+    example: "중개인이에요.", exampleKatakana: "チュンゲイニエヨ", exampleMeaning: "仲介人です。",
+    breakdown: [
+      { word: "이에요", meaning: "です" }
+    ] },
+  { level: "5", hangul: "임대", katakana: "イムデ", meaning: "賃貸",
+    example: "집을 임대해요.", exampleKatakana: "チブル イムデヘヨ", exampleMeaning: "家を賃貸します。",
+    breakdown: [
+      { word: "집", meaning: "家" }
+    ] },
+  { level: "5", hangul: "지명", katakana: "チミョン", meaning: "地名",
+    example: "지명을 외워요.", exampleKatakana: "チミョンウル ウェウォヨ", exampleMeaning: "地名を覚えます。",
+    breakdown: [
+      { word: "외워요", meaning: "覚えます" }
+    ] },
+  { level: "5", hangul: "소모", katakana: "ソモ", meaning: "消耗",
+    example: "체력을 소모해요.", exampleKatakana: "チェリョグル ソモヘヨ", exampleMeaning: "体力を消耗します。",
+    breakdown: [
+      { word: "체력", meaning: "体力" }
+    ] },
+  { level: "5", hangul: "저고리", katakana: "チョゴリ", meaning: "チョゴリ",
+    example: "저고리를 입어요.", exampleKatakana: "チョゴリルル イボヨ", exampleMeaning: "チョゴリを着ます。",
+    breakdown: [
+      { word: "입어요", meaning: "着ます" }
+    ] },
+  { level: "5", hangul: "상반신", katakana: "サンバンシン", meaning: "上半身",
+    example: "상반신 사진이에요.", exampleKatakana: "サンバンシン サジニエヨ", exampleMeaning: "上半身の写真です。",
+    breakdown: [
+      { word: "사진", meaning: "写真" }
+    ] },
+  { level: "5", hangul: "참을성", katakana: "チャムルソン", meaning: "忍耐力",
+    example: "참을성이 있어요.", exampleKatakana: "チャムルソンイ イッソヨ", exampleMeaning: "忍耐力があります。",
+    breakdown: [
+      { word: "있어요", meaning: "あります" }
+    ] },
+  { level: "5", hangul: "초인종", katakana: "チョインジョン", meaning: "呼び鈴",
+    example: "초인종을 눌러요.", exampleKatakana: "チョインジョンウル ヌルロヨ", exampleMeaning: "呼び鈴を押します。",
+    breakdown: [
+      { word: "눌러요", meaning: "押します" }
+    ] },
+  { level: "5", hangul: "과하다", katakana: "クァハダ", meaning: "過ぎる",
+    example: "운동이 과해요.", exampleKatakana: "ウンドンイ クァヘヨ", exampleMeaning: "運動が過ぎます。",
+    breakdown: [
+      { word: "운동", meaning: "運動" }
+    ] },
+  { level: "5", hangul: "폐", katakana: "ペ", meaning: "肺",
+    example: "폐가 나빠요.", exampleKatakana: "ペガ ナッパヨ", exampleMeaning: "肺が悪いです。",
+    breakdown: [
+      { word: "나빠요", meaning: "悪いです" }
+    ] },
+  { level: "5", hangul: "확정", katakana: "ファクチョン", meaning: "確定",
+    example: "일정이 확정됐어요.", exampleKatakana: "イルジョンイ ファクチョンドェッソヨ", exampleMeaning: "日程が確定しました。",
+    breakdown: [
+      { word: "일정", meaning: "日程" }
+    ] },
+  { level: "5", hangul: "부담감", katakana: "プダムガム", meaning: "負担感",
+    example: "부담감을 느껴요.", exampleKatakana: "プダムガムル ヌッキョヨ", exampleMeaning: "負担を感じます。",
+    breakdown: [
+      { word: "느껴요", meaning: "感じます" }
+    ] },
+  { level: "5", hangul: "오래가다", katakana: "オレガダ", meaning: "長持ちする",
+    example: "건전지가 오래가요.", exampleKatakana: "コンジョンジガ オレガヨ", exampleMeaning: "電池が長持ちします。",
+    breakdown: [
+      { word: "건전지", meaning: "電池" }
+    ] },
+  { level: "5", hangul: "걷어차다", katakana: "コドチャダ", meaning: "蹴飛ばす",
+    example: "공을 걷어차요.", exampleKatakana: "コンウル コドチャヨ", exampleMeaning: "ボールを蹴飛ばします。",
+    breakdown: [
+      { word: "공", meaning: "ボール" }
+    ] },
+  { level: "5", hangul: "우대", katakana: "ウデ", meaning: "優待",
+    example: "우대 혜택이에요.", exampleKatakana: "ウデ ヘテギエヨ", exampleMeaning: "優待特典です。",
+    breakdown: [
+      { word: "혜택", meaning: "特典" }
+    ] },
+  { level: "5", hangul: "이레", katakana: "イレ", meaning: "七日",
+    example: "이레 만에 나았어요.", exampleKatakana: "イレ マネ ナアッソヨ", exampleMeaning: "七日で治りました。",
+    breakdown: [
+      { word: "나았어요", meaning: "治りました" }
+    ] },
+  { level: "5", hangul: "중시", katakana: "チュンシ", meaning: "重視",
+    example: "실력을 중시해요.", exampleKatakana: "シルリョグル チュンシヘヨ", exampleMeaning: "実力を重視します。",
+    breakdown: [
+      { word: "실력", meaning: "実力" }
+    ] },
   { level: "5", hangul: "라일락", katakana: "ライルラク", meaning: "ライラック",
     example: "라일락 향기예요.", exampleKatakana: "ライルラク ヒャンギエヨ", exampleMeaning: "ライラックの香りです。",
     breakdown: [
