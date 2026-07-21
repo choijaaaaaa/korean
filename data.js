@@ -4,6 +4,11 @@
 // 個別に対照・検証してから追加する（japanessプロジェクトと同じ方針）。
 
 const VOCAB = [
+  { level: "2", hangul: "가까이", katakana: "カッカイ", meaning: "近くに",
+    example: "가까이 오세요.", exampleKatakana: "カッカイ オセヨ", exampleMeaning: "近くに来てください。",
+    breakdown: [
+      { word: "오세요", meaning: "来てください" }
+    ] },
   { level: "2", hangul: "사거리", katakana: "サゴリ", meaning: "四つ角",
     example: "사거리에서 만나요.", exampleKatakana: "サゴリエソ マンナヨ", exampleMeaning: "四つ角で会いましょう。",
     breakdown: [
