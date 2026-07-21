@@ -4,6 +4,76 @@
 // 個別に対照・検証してから追加する（japanessプロジェクトと同じ方針）。
 
 const VOCAB = [
+  { level: "4", hangul: "새우다", katakana: "セウダ", meaning: "徹夜する",
+    example: "밤을 새워요.", exampleKatakana: "パムル セウォヨ", exampleMeaning: "夜を明かします。",
+    breakdown: [
+      { word: "밤", meaning: "夜" }
+    ] },
+  { level: "4", hangul: "쐬다", katakana: "スェダ", meaning: "浴びる",
+    example: "바람을 쐬어요.", exampleKatakana: "パラムル スェオヨ", exampleMeaning: "風に当たります。",
+    breakdown: [
+      { word: "바람", meaning: "風" }
+    ] },
+  { level: "4", hangul: "소녀", katakana: "ソニョ", meaning: "少女",
+    example: "소녀가 웃어요.", exampleKatakana: "ソニョガ ウソヨ", exampleMeaning: "少女が笑います。",
+    breakdown: [
+      { word: "웃어요", meaning: "笑います" }
+    ] },
+  { level: "4", hangul: "하긴", katakana: "ハギン", meaning: "確かに",
+    example: "하긴 맞는 말이에요.", exampleKatakana: "ハギン マンヌン マリエヨ", exampleMeaning: "確かに正しい言葉です。",
+    breakdown: [
+      { word: "맞는", meaning: "正しい" }
+    ] },
+  { level: "4", hangul: "쿵", katakana: "クン", meaning: "ドン",
+    example: "쿵 소리가 나요.", exampleKatakana: "クン ソリガ ナヨ", exampleMeaning: "ドンという音がします。",
+    breakdown: [
+      { word: "소리", meaning: "音" }
+    ] },
+  { level: "4", hangul: "쿨쿨", katakana: "クルクル", meaning: "ぐうぐう",
+    example: "쿨쿨 자요.", exampleKatakana: "クルクル チャヨ", exampleMeaning: "ぐうぐう眠ります。",
+    breakdown: [
+      { word: "자요", meaning: "眠ります" }
+    ] },
+  { level: "4", hangul: "야옹", katakana: "ヤオン", meaning: "にゃあ",
+    example: "고양이가 야옹 울어요.", exampleKatakana: "コヤンイガ ヤオン ウロヨ", exampleMeaning: "猫がにゃあと鳴きます。",
+    breakdown: [
+      { word: "고양이", meaning: "猫" }
+    ] },
+  { level: "4", hangul: "담날", katakana: "タムナル", meaning: "翌日",
+    example: "담날 만나요.", exampleKatakana: "タムナル マンナヨ", exampleMeaning: "翌日会いましょう。",
+    breakdown: [
+      { word: "만나요", meaning: "会いましょう" }
+    ] },
+  { level: "4", hangul: "다소", katakana: "タソ", meaning: "多少",
+    example: "다소 어려워요.", exampleKatakana: "タソ オリョウォヨ", exampleMeaning: "多少難しいです。",
+    breakdown: [
+      { word: "어려워요", meaning: "難しいです" }
+    ] },
+  { level: "4", hangul: "상관없이", katakana: "サングァノプシ", meaning: "関係なく",
+    example: "날씨에 상관없이 가요.", exampleKatakana: "ナルシエ サングァノプシ カヨ", exampleMeaning: "天気に関係なく行きます。",
+    breakdown: [
+      { word: "날씨", meaning: "天気" }
+    ] },
+  { level: "4", hangul: "량", katakana: "リャン", meaning: "両（車両）",
+    example: "한 량이에요.", exampleKatakana: "ハン リャンイエヨ", exampleMeaning: "1両です。",
+    breakdown: [
+      { word: "한", meaning: "1" }
+    ] },
+  { level: "4", hangul: "연탄", katakana: "ヨンタン", meaning: "練炭",
+    example: "연탄을 때요.", exampleKatakana: "ヨンタヌル テヨ", exampleMeaning: "練炭を燃やします。",
+    breakdown: [
+      { word: "때요", meaning: "燃やします" }
+    ] },
+  { level: "4", hangul: "멍멍", katakana: "モンモン", meaning: "わんわん",
+    example: "개가 멍멍 짖어요.", exampleKatakana: "ケガ モンモン チジョヨ", exampleMeaning: "犬がわんわん吠えます。",
+    breakdown: [
+      { word: "개", meaning: "犬" }
+    ] },
+  { level: "4", hangul: "밤새다", katakana: "パムセダ", meaning: "夜が明ける",
+    example: "밤새워 놀아요.", exampleKatakana: "パムセウォ ノラヨ", exampleMeaning: "夜通し遊びます。",
+    breakdown: [
+      { word: "놀아요", meaning: "遊びます" }
+    ] },
   { level: "4", hangul: "일반적", katakana: "イルバンジョク", meaning: "一般的",
     example: "일반적인 방법이에요.", exampleKatakana: "イルバンジョギン パンボビエヨ", exampleMeaning: "一般的な方法です。",
     breakdown: [
