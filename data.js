@@ -4,6 +4,16 @@
 // 個別に対照・検証してから追加する（japanessプロジェクトと同じ方針）。
 
 const VOCAB = [
+  { level: "6", hangul: "활력", katakana: "ファルリョク", meaning: "活力",
+    example: "활력을 되찾아요.", exampleKatakana: "ファルリョグル トェチャジャヨ", exampleMeaning: "活力を取り戻します。",
+    breakdown: [
+      { word: "되찾아요", meaning: "取り戻します" }
+    ] },
+  { level: "6", hangul: "구실", katakana: "クシル", meaning: "口実・役目",
+    example: "핑계를 구실로 삼아요.", exampleKatakana: "ピンゲルル クシルロ サマヨ", exampleMeaning: "言い訳を口実にします。",
+    breakdown: [
+      { word: "핑계", meaning: "言い訳" }
+    ] },
   { level: "6", hangul: "이례적", katakana: "イレジョク", meaning: "異例的",
     example: "이례적인 결정이에요.", exampleKatakana: "イレジョギン キョルジョンイエヨ", exampleMeaning: "異例な決定です。",
     breakdown: [
