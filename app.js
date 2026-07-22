@@ -424,6 +424,86 @@ function renderPronunciationRules() {
   listEl.appendChild(fragment);
 }
 
+// ---------- 不規則活用セクション ----------
+
+function renderIrregulars() {
+  const listEl = document.getElementById("irregular-list");
+  listEl.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  IRREGULARS.forEach((group) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card";
+
+    const title = document.createElement("h3");
+    title.textContent = group.name;
+    card.appendChild(title);
+
+    const explanation = document.createElement("p");
+    explanation.className = "pattern-explanation";
+    explanation.textContent = group.explanation;
+    card.appendChild(explanation);
+
+    const exampleList = document.createElement("ul");
+    exampleList.className = "example-pair-list";
+    group.examples.forEach((ex) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="example-pair-ko">${escapeHtml(ex.hangul)}（${escapeHtml(ex.meaning)}）</span>
+        <span class="example-pair-ja">${escapeHtml(ex.change)}</span>`;
+      exampleList.appendChild(li);
+    });
+    card.appendChild(exampleList);
+
+    if (group.regularNote) {
+      const note = document.createElement("p");
+      note.className = "irregular-note";
+      note.textContent = group.regularNote;
+      card.appendChild(note);
+    }
+
+    fragment.appendChild(card);
+  });
+
+  listEl.appendChild(fragment);
+}
+
+// ---------- 新造語・流行語セクション ----------
+
+function renderSlang() {
+  const listEl = document.getElementById("slang-list");
+  listEl.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  SLANG.forEach((group) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card";
+
+    const title = document.createElement("h3");
+    title.textContent = group.era;
+    card.appendChild(title);
+
+    const termList = document.createElement("ul");
+    termList.className = "slang-term-list";
+    group.terms.forEach((t) => {
+      const li = document.createElement("li");
+      li.className = "slang-term-item";
+      li.innerHTML = `<div class="slang-term-head">
+          <span class="hanja-korean">${escapeHtml(t.term)}</span>
+          <span class="katakana-reading slang-katakana">${escapeHtml(t.katakana)}</span>
+        </div>
+        <p class="meaning">${escapeHtml(t.meaning)}</p>
+        <p class="pattern-explanation">${escapeHtml(t.origin)}</p>
+        <p class="example-ko">${escapeHtml(t.example)}</p>`;
+      termList.appendChild(li);
+    });
+    card.appendChild(termList);
+
+    fragment.appendChild(card);
+  });
+
+  listEl.appendChild(fragment);
+}
+
 // ---------- セクション切り替え ----------
 
 const sections = {
@@ -431,12 +511,16 @@ const sections = {
   hanja: document.getElementById("hanja-section"),
   grammar: document.getElementById("grammar-section"),
   pronunciation: document.getElementById("pronunciation-section"),
+  irregular: document.getElementById("irregular-section"),
+  slang: document.getElementById("slang-section"),
 };
 
 const sectionRenderers = {
   hanja: renderHanjaPatterns,
   grammar: renderGrammarPatterns,
   pronunciation: renderPronunciationRules,
+  irregular: renderIrregulars,
+  slang: renderSlang,
 };
 
 const renderedSections = new Set();

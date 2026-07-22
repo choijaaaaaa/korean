@@ -18,6 +18,8 @@
     <button class="section-tab" data-section="hanja" aria-pressed="false">🈂️ 漢字語対応</button>
     <button class="section-tab" data-section="grammar" aria-pressed="false">📝 文法パターン</button>
     <button class="section-tab" data-section="pronunciation" aria-pressed="false">🔊 発音規則</button>
+    <button class="section-tab" data-section="irregular" aria-pressed="false">🔀 不規則活用</button>
+    <button class="section-tab" data-section="slang" aria-pressed="false">🔥 新造語・流行語</button>
   </nav>
 
   <!-- ---------- 単語セクション ---------- -->
@@ -103,6 +105,24 @@
     <div id="pronunciation-list" class="pattern-grid"></div>
   </section>
 
+  <!-- ---------- 不規則活用セクション ---------- -->
+  <section id="irregular-section" class="app-section" hidden>
+    <p class="section-intro">
+      韓国語の用言（動詞・形容詞）の中には、語幹に語尾がつくとき形が変わる「不規則活用」がある。
+      形が似ている規則活用の語と対比しながら覚えると混同しにくい。
+    </p>
+    <div id="irregular-list" class="pattern-grid"></div>
+  </section>
+
+  <!-- ---------- 新造語・流行語セクション ---------- -->
+  <section id="slang-section" class="app-section" hidden>
+    <p class="section-intro">
+      教科書には載らないが、SNSや会話でよく使われる新造語・流行語を時代順にまとめた。
+      流行した時期を明記しているので、今も使われる表現と一時的に流行した表現を区別できる。
+    </p>
+    <div id="slang-list" class="pattern-grid"></div>
+  </section>
+
   <template id="word-card-template">
     <article class="word-card">
       <div class="word-card-top">
@@ -166,6 +186,8 @@
   <script src="hanja-data.js"></script>
   <script src="grammar-data.js"></script>
   <script src="pronunciation-data.js"></script>
+  <script src="irregular-data.js"></script>
+  <script src="slang-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

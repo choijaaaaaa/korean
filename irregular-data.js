@@ -1,0 +1,100 @@
+// @purpose  韓国語の不規則活用（ㄷ・ㅂ・ㅅ・ㅎ・르 不規則、으/ㄹ 脱落）学習データ
+// WHY: 語幹の変化パターンは単語暗記だけでは身につかず、似た形の規則活用語との対比で覚える方が定着しやすい。
+
+const IRREGULARS = [
+  {
+    id: "d",
+    name: "ㄷ 不規則",
+    explanation: "語幹末のパッチムㄷが、母音で始まる語尾（-아/어요、-(으)면など）の前でㄹに変わる。",
+    examples: [
+      { hangul: "듣다", meaning: "聞く", change: "들어요 / 들으면 / 들으니까" },
+      { hangul: "걷다", meaning: "歩く", change: "걸어요 / 걸으면 / 걸으니까" },
+      { hangul: "묻다", meaning: "尋ねる", change: "물어요 / 물으면 / 물으니까" },
+      { hangul: "싣다", meaning: "積む", change: "실어요 / 실으면 / 실으니까" },
+      { hangul: "깨닫다", meaning: "悟る", change: "깨달아요 / 깨달으면 / 깨달으니까" },
+    ],
+    regularNote: "받다（もらう）、믿다（信じる）、닫다（閉める）、얻다（得る）は形が似ているが規則活用（받아요・믿어요・닫아요・얻어요）。",
+  },
+  {
+    id: "b",
+    name: "ㅂ 不規則",
+    explanation: "語幹末のパッチムㅂが、母音で始まる語尾の前で「우」に変わる（一部の語は「오」になる）。",
+    examples: [
+      { hangul: "덥다", meaning: "暑い", change: "더워요 / 더우면 / 더우니까" },
+      { hangul: "춥다", meaning: "寒い", change: "추워요 / 추우면 / 추우니까" },
+      { hangul: "어렵다", meaning: "難しい", change: "어려워요 / 어려우면 / 어려우니까" },
+      { hangul: "쉽다", meaning: "易しい", change: "쉬워요 / 쉬우면 / 쉬우니까" },
+      { hangul: "아름답다", meaning: "美しい", change: "아름다워요 / 아름다우면 / 아름다우니까" },
+      { hangul: "돕다", meaning: "手伝う", change: "도와요 / 도우면 / 도우니까（例外的に「오」）" },
+      { hangul: "곱다", meaning: "きれいだ", change: "고와요 / 고우면 / 고우니까（例外的に「오」）" },
+    ],
+    regularNote: "좁다（狭い）、잡다（つかむ）、뽑다（選ぶ）、입다（着る）は規則活用（좁아요・잡아요・뽑아요・입어요）。",
+  },
+  {
+    id: "s",
+    name: "ㅅ 不規則",
+    explanation: "語幹末のパッチムㅅが、母音で始まる語尾の前で脱落する。",
+    examples: [
+      { hangul: "짓다", meaning: "建てる・作る", change: "지어요 / 지으면 / 지으니까" },
+      { hangul: "낫다", meaning: "治る・ましだ", change: "나아요 / 나으면 / 나으니까" },
+      { hangul: "잇다", meaning: "つなぐ", change: "이어요 / 이으면 / 이으니까" },
+      { hangul: "붓다", meaning: "注ぐ・むくむ", change: "부어요 / 부으면 / 부으니까" },
+    ],
+    regularNote: "웃다（笑う）、벗다（脱ぐ）、씻다（洗う）は規則活用（웃어요・벗어요・씻어요）。",
+  },
+  {
+    id: "h",
+    name: "ㅎ 不規則",
+    explanation: "「ㅎ」で終わる形容詞（좋다を除く）は、母音語尾の前でㅎが脱落し母音も変化する。「-아/어요」は「-애요」「-얘요」になる。",
+    examples: [
+      { hangul: "빨갛다", meaning: "赤い", change: "빨개요 / 빨가면 / 빨간" },
+      { hangul: "하얗다", meaning: "白い", change: "하얘요 / 하야면 / 하얀" },
+      { hangul: "노랗다", meaning: "黄色い", change: "노래요 / 노라면 / 노란" },
+      { hangul: "까맣다", meaning: "黒い", change: "까매요 / 까마면 / 까만" },
+      { hangul: "그렇다", meaning: "そうだ", change: "그래요 / 그러면 / 그런" },
+      { hangul: "이렇다", meaning: "こうだ", change: "이래요 / 이러면 / 이런" },
+    ],
+    regularNote: "좋다（良い）は「ㅎ」で終わるが規則活用（좋아요・좋으면・좋은）。놓다（置く、動詞）も規則活用（놓아요）。",
+  },
+  {
+    id: "r",
+    name: "르 不規則",
+    explanation: "語幹が「르」で終わる用言は、「-아/어요」の前で「르」が「ㄹㄹ」に変わる（語幹の母音が脱落し、直前の音節にㄹパッチムが付く）。",
+    examples: [
+      { hangul: "모르다", meaning: "知らない", change: "몰라요 / 몰랐어요" },
+      { hangul: "빠르다", meaning: "速い", change: "빨라요 / 빨랐어요" },
+      { hangul: "부르다", meaning: "呼ぶ・歌う", change: "불러요 / 불렀어요" },
+      { hangul: "다르다", meaning: "違う", change: "달라요 / 달랐어요" },
+      { hangul: "고르다", meaning: "選ぶ", change: "골라요 / 골랐어요" },
+      { hangul: "서두르다", meaning: "急ぐ", change: "서둘러요 / 서둘렀어요" },
+    ],
+    regularNote: "들르다（立ち寄る）、따르다（従う・注ぐ）は形が似ているが「으」脱落のみで규칙（들러요・따라요）。",
+  },
+  {
+    id: "eu",
+    name: "「으」脱落（規則的だが要注意）",
+    explanation: "語幹が「으」で終わる用言は、「-아/어요」の前で「으」が脱落し、直前の母音がㅏ・ㅗなら「아요」、それ以外は「어요」になる。分類上は規則活用だが初級者が混同しやすい。",
+    examples: [
+      { hangul: "쓰다", meaning: "書く・使う", change: "써요 / 썼어요" },
+      { hangul: "크다", meaning: "大きい", change: "커요 / 컸어요" },
+      { hangul: "아프다", meaning: "痛い", change: "아파요 / 아팠어요" },
+      { hangul: "예쁘다", meaning: "かわいい", change: "예뻐요 / 예뻤어요" },
+      { hangul: "바쁘다", meaning: "忙しい", change: "바빠요 / 바빴어요" },
+      { hangul: "기쁘다", meaning: "嬉しい", change: "기뻐요 / 기뻤어요" },
+    ],
+    regularNote: "「르」不規則との違いに注意：르は「ㄹㄹ」になるが、これは「으」だけが脱落する。",
+  },
+  {
+    id: "l",
+    name: "「ㄹ」脱落（規則的だが要注意）",
+    explanation: "語幹末のパッチムㄹは、ㄴ・ㅂ・ㅅ・(으)ㄹ・語尾の「-는」などで始まる語尾の前で脱落する。",
+    examples: [
+      { hangul: "살다", meaning: "住む・生きる", change: "사는 / 삽니다 / 사세요 / 살 거예요" },
+      { hangul: "놀다", meaning: "遊ぶ", change: "노는 / 놉니다 / 노세요 / 놀 거예요" },
+      { hangul: "만들다", meaning: "作る", change: "만드는 / 만듭니다 / 만드세요" },
+      { hangul: "알다", meaning: "知る", change: "아는 / 압니다 / 아세요" },
+      { hangul: "길다", meaning: "長い", change: "긴 / 깁니다 / 기니까" },
+    ],
+    regularNote: "「-아/어요」や「-고」の前ではㄹは脱落しない（살아요・살고）。脱落するのは特定の語尾の前だけ。",
+  },
+];
