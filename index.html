@@ -19,6 +19,7 @@
     <button class="section-tab" data-section="grammar" aria-pressed="false">📝 文法パターン</button>
     <button class="section-tab" data-section="pronunciation" aria-pressed="false">🔊 発音規則</button>
     <button class="section-tab" data-section="irregular" aria-pressed="false">🔀 不規則活用</button>
+    <button class="section-tab" data-section="honorific" aria-pressed="false">🙏 敬語</button>
     <button class="section-tab" data-section="slang" aria-pressed="false">🔥 新造語・流行語</button>
   </nav>
 
@@ -118,6 +119,16 @@
     <div id="irregular-list" class="pattern-grid"></div>
   </section>
 
+  <!-- ---------- 敬語セクション ---------- -->
+  <section id="honorific-section" class="app-section" hidden>
+    <p class="section-intro">
+      韓国語の敬語は、目上の人には基本的に常に敬語を使う「絶対敬語」に近い性質を持つ。
+      文法規則（-시-）だけでなく、単語自体がまるごと入れ替わる語彙敬語も多いので、対で覚える必要がある。
+    </p>
+    <div id="speech-level-list" class="pattern-grid honorific-level-grid"></div>
+    <div id="honorific-list" class="pattern-grid"></div>
+  </section>
+
   <!-- ---------- 新造語・流行語セクション ---------- -->
   <section id="slang-section" class="app-section" hidden>
     <p class="section-intro">
@@ -191,6 +202,7 @@
   <script src="grammar-data.js"></script>
   <script src="pronunciation-data.js"></script>
   <script src="irregular-data.js"></script>
+  <script src="honorific-data.js"></script>
   <script src="slang-data.js"></script>
   <script src="app.js"></script>
 </body>

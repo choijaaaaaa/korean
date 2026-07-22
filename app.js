@@ -467,6 +467,70 @@ function renderIrregulars() {
   listEl.appendChild(fragment);
 }
 
+// ---------- 敬語セクション ----------
+
+function renderHonorifics() {
+  const levelListEl = document.getElementById("speech-level-list");
+  levelListEl.innerHTML = "";
+  const levelFragment = document.createDocumentFragment();
+
+  SPEECH_LEVELS.forEach((lv) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card honorific-level-card";
+
+    const title = document.createElement("h3");
+    title.textContent = lv.name;
+    card.appendChild(title);
+
+    const usage = document.createElement("p");
+    usage.className = "pattern-explanation";
+    usage.textContent = lv.usage;
+    card.appendChild(usage);
+
+    const example = document.createElement("p");
+    example.className = "example-ko";
+    example.textContent = lv.example;
+    card.appendChild(example);
+
+    levelFragment.appendChild(card);
+  });
+  levelListEl.appendChild(levelFragment);
+
+  const listEl = document.getElementById("honorific-list");
+  listEl.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  HONORIFIC_WORDS.forEach((group) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card";
+
+    const title = document.createElement("h3");
+    title.textContent = group.name;
+    card.appendChild(title);
+
+    const explanation = document.createElement("p");
+    explanation.className = "pattern-explanation";
+    explanation.textContent = group.explanation;
+    card.appendChild(explanation);
+
+    const pairList = document.createElement("ul");
+    pairList.className = "hanja-pair-list";
+    group.pairs.forEach((pair) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="hanja-korean">${escapeHtml(pair.casual)}</span>
+        <span class="hanja-arrow">→</span>
+        <span class="hanja-japanese">${escapeHtml(pair.honorific)}</span>
+        <span class="hanja-meaning">${escapeHtml(pair.meaning)}</span>`;
+      pairList.appendChild(li);
+    });
+    card.appendChild(pairList);
+
+    fragment.appendChild(card);
+  });
+
+  listEl.appendChild(fragment);
+}
+
 // ---------- 新造語・流行語セクション ----------
 
 function renderSlang() {
@@ -512,6 +576,7 @@ const sections = {
   grammar: document.getElementById("grammar-section"),
   pronunciation: document.getElementById("pronunciation-section"),
   irregular: document.getElementById("irregular-section"),
+  honorific: document.getElementById("honorific-section"),
   slang: document.getElementById("slang-section"),
 };
 
@@ -520,6 +585,7 @@ const sectionRenderers = {
   grammar: renderGrammarPatterns,
   pronunciation: renderPronunciationRules,
   irregular: renderIrregulars,
+  honorific: renderHonorifics,
   slang: renderSlang,
 };
 

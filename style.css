@@ -670,3 +670,16 @@ body {
   margin: 0;
   font-size: 0.9rem;
 }
+
+/* ---------- 敬語セクション ---------- */
+
+.honorific-level-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  margin-bottom: 0;
+  padding-bottom: var(--space-4);
+}
+
+.honorific-level-card .example-ko {
+  color: var(--color-accent);
+  font-size: 1rem;
+}
