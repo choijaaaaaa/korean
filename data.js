@@ -4,6 +4,11 @@
 // 個別に対照・検証してから追加する（japanessプロジェクトと同じ方針）。
 
 const VOCAB = [
+  { level: "5", hangul: "이슬람교", katakana: "イスルラムギョ", meaning: "イスラム教",
+    example: "이슬람교를 믿어요.", exampleKatakana: "イスルラムギョルル ミドヨ", exampleMeaning: "イスラム教を信じています。",
+    breakdown: [
+      { word: "믿어요", meaning: "信じています" }
+    ] },
   { level: "5", hangul: "불꽃놀이", katakana: "プルコッノリ", meaning: "花火遊び",
     example: "불꽃놀이를 봐요.", exampleKatakana: "プルコッノリルル バヨ", exampleMeaning: "花火を見ます。",
     breakdown: [
