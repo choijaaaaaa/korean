@@ -106,3 +106,35 @@ function getLevelStats(level) {
   });
   return { studied, mastered, total };
 }
+
+// ---------- その他セクション用の簡易チェック（既読/未読の二値管理） ----------
+// WHY: 単語セクションは「隠して自己採点」するクイズ形式のためライトナー箱が適するが、
+// 文法・慣用句などは常に内容が見えている一覧形式のため、シンプルな既知トグルの方がUXに合う。
+
+const ITEM_PROGRESS_KEY = "korean-item-progress-v1";
+let itemProgressData = loadJSON(ITEM_PROGRESS_KEY, {});
+
+function itemKey(section, id) {
+  return `${section}::${id}`;
+}
+
+function isItemKnown(section, id) {
+  return !!itemProgressData[itemKey(section, id)];
+}
+
+function toggleItemKnown(section, id) {
+  const key = itemKey(section, id);
+  if (itemProgressData[key]) {
+    delete itemProgressData[key];
+  } else {
+    itemProgressData[key] = { markedAt: Date.now() };
+    bumpStreak();
+  }
+  saveJSON(ITEM_PROGRESS_KEY, itemProgressData);
+  return !!itemProgressData[key];
+}
+
+function getSectionStats(section, allIds) {
+  const known = allIds.filter((id) => isItemKnown(section, id)).length;
+  return { known, total: allIds.length };
+}

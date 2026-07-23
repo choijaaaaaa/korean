@@ -369,13 +369,18 @@ updateStatsUI();
 
 const hanjaState = { query: "" };
 
-function buildHanjaPairItem(pair) {
+registerSectionStats("hanja", "hanja-stats", () =>
+  HANJA_PATTERNS.flatMap((group) => group.pairs.map((pair) => `${group.id}_${pair.hanja}`))
+);
+
+function buildHanjaPairItem(group, pair) {
   const li = document.createElement("li");
   li.innerHTML = `<span class="hanja-hanja">${escapeHtml(pair.hanja)}</span>
     <span class="hanja-korean">${escapeHtml(pair.korean)}</span>
     <span class="hanja-arrow">→</span>
     <span class="hanja-japanese">${escapeHtml(pair.japanese)}</span>
     <span class="hanja-meaning">${escapeHtml(pair.meaning)}</span>`;
+  li.appendChild(buildKnownToggle("hanja", `${group.id}_${pair.hanja}`));
   return li;
 }
 
@@ -422,7 +427,7 @@ function renderHanjaPatterns() {
     const pairList = document.createElement("ul");
     pairList.className = "hanja-pair-list";
     pairList.hidden = !query;
-    pairs.forEach((pair) => pairList.appendChild(buildHanjaPairItem(pair)));
+    pairs.forEach((pair) => pairList.appendChild(buildHanjaPairItem(group, pair)));
     card.appendChild(pairList);
 
     header.addEventListener("click", () => {
@@ -436,12 +441,15 @@ function renderHanjaPatterns() {
 
   listEl.appendChild(fragment);
   emptyState.hidden = visibleGroupCount !== 0;
+  updateSectionStatsDisplay("hanja");
 }
 
 document.getElementById("hanja-search").addEventListener("input", (e) => {
   hanjaState.query = e.target.value;
   renderHanjaPatterns();
 });
+
+registerSectionStats("falsefriends", "falsefriends-stats", () => FALSE_FRIENDS.map((ff) => ff.hanja));
 
 function renderFalseFriends() {
   const listEl = document.getElementById("false-friends-list");
@@ -454,6 +462,7 @@ function renderFalseFriends() {
 
     const title = document.createElement("h3");
     title.innerHTML = `<span class="grammar-pattern-text">${escapeHtml(ff.hanja)}</span> <span class="grammar-title-ja">（${escapeHtml(ff.korean)} / ${escapeHtml(ff.japaneseReading)}）</span>`;
+    title.appendChild(buildKnownToggle("falsefriends", ff.hanja));
     card.appendChild(title);
 
     const compare = document.createElement("div");
@@ -477,6 +486,7 @@ function renderFalseFriends() {
   });
 
   listEl.appendChild(fragment);
+  updateSectionStatsDisplay("falsefriends");
 }
 
 function renderHanjaSection() {
@@ -487,6 +497,8 @@ function renderHanjaSection() {
 // ---------- 文法パターンセクション ----------
 
 const grammarState = { level: "ALL", query: "" };
+
+registerSectionStats("grammar", "grammar-stats", () => GRAMMAR.map((g) => g.pattern));
 
 function renderGrammarPatterns() {
   const listEl = document.getElementById("grammar-list");
@@ -511,6 +523,7 @@ function renderGrammarPatterns() {
 
     const title = document.createElement("h3");
     title.innerHTML = `<span class="grammar-pattern-text">${escapeHtml(g.pattern)}</span> <span class="grammar-title-ja">${escapeHtml(g.title)}</span>`;
+    title.appendChild(buildKnownToggle("grammar", g.pattern));
     card.appendChild(title);
 
     const explanation = document.createElement("p");
@@ -533,6 +546,7 @@ function renderGrammarPatterns() {
 
   listEl.appendChild(fragment);
   emptyStateEl.hidden = filtered.length !== 0;
+  updateSectionStatsDisplay("grammar");
 }
 
 document.querySelectorAll(".grammar-level-tab").forEach((tab) => {
@@ -556,6 +570,10 @@ document.getElementById("grammar-search").addEventListener("input", (e) => {
 // ---------- 発音規則セクション ----------
 
 const pronunciationState = { query: "" };
+
+registerSectionStats("pronunciation", "pronunciation-stats", () =>
+  PRONUNCIATION_RULES.flatMap((rule) => rule.examples.map((ex) => `${rule.name}_${ex.written}`))
+);
 
 function renderPronunciationRules() {
   const listEl = document.getElementById("pronunciation-list");
@@ -592,6 +610,7 @@ function renderPronunciationRules() {
       const li = document.createElement("li");
       li.innerHTML = `<span class="example-pair-ko">${escapeHtml(ex.written)} → [${escapeHtml(ex.pronounced)}]</span>
         <span class="example-pair-ja">${escapeHtml(ex.meaning)}</span>`;
+      li.appendChild(buildKnownToggle("pronunciation", `${rule.name}_${ex.written}`));
       exampleList.appendChild(li);
     });
     card.appendChild(exampleList);
@@ -601,6 +620,7 @@ function renderPronunciationRules() {
 
   listEl.appendChild(fragment);
   emptyStateEl.hidden = visibleCount !== 0;
+  updateSectionStatsDisplay("pronunciation");
 }
 
 document.getElementById("pronunciation-search").addEventListener("input", (e) => {
@@ -611,6 +631,10 @@ document.getElementById("pronunciation-search").addEventListener("input", (e) =>
 // ---------- 不規則活用セクション ----------
 
 const irregularState = { query: "" };
+
+registerSectionStats("irregular", "irregular-stats", () =>
+  IRREGULARS.flatMap((group) => group.examples.map((ex) => `${group.id}_${ex.hangul}`))
+);
 
 function renderIrregulars() {
   const listEl = document.getElementById("irregular-list");
@@ -647,6 +671,7 @@ function renderIrregulars() {
       const li = document.createElement("li");
       li.innerHTML = `<span class="example-pair-ko">${escapeHtml(ex.hangul)}（${escapeHtml(ex.meaning)}）</span>
         <span class="example-pair-ja">${escapeHtml(ex.change)}</span>`;
+      li.appendChild(buildKnownToggle("irregular", `${group.id}_${ex.hangul}`));
       exampleList.appendChild(li);
     });
     card.appendChild(exampleList);
@@ -663,6 +688,7 @@ function renderIrregulars() {
 
   listEl.appendChild(fragment);
   emptyStateEl.hidden = visibleCount !== 0;
+  updateSectionStatsDisplay("irregular");
 }
 
 document.getElementById("irregular-search").addEventListener("input", (e) => {
@@ -673,6 +699,10 @@ document.getElementById("irregular-search").addEventListener("input", (e) => {
 // ---------- 敬語セクション ----------
 
 const honorificState = { query: "" };
+
+registerSectionStats("honorific", "honorific-stats", () =>
+  HONORIFIC_WORDS.flatMap((group) => group.pairs.map((pair) => `${group.id}_${pair.casual}`))
+);
 
 function renderHonorifics() {
   const levelListEl = document.getElementById("speech-level-list");
@@ -737,6 +767,7 @@ function renderHonorifics() {
         <span class="hanja-arrow">→</span>
         <span class="hanja-japanese">${escapeHtml(pair.honorific)}</span>
         <span class="hanja-meaning">${escapeHtml(pair.meaning)}</span>`;
+      li.appendChild(buildKnownToggle("honorific", `${group.id}_${pair.casual}`));
       pairList.appendChild(li);
     });
     card.appendChild(pairList);
@@ -746,6 +777,7 @@ function renderHonorifics() {
 
   listEl.appendChild(fragment);
   emptyStateEl.hidden = visibleCount !== 0;
+  updateSectionStatsDisplay("honorific");
 }
 
 document.getElementById("honorific-search").addEventListener("input", (e) => {
@@ -756,6 +788,8 @@ document.getElementById("honorific-search").addEventListener("input", (e) => {
 // ---------- 数詞・助数詞セクション ----------
 
 const numberState = { query: "" };
+
+registerSectionStats("number", "number-stats", () => COUNTERS.map((c) => c.word));
 
 function renderNumbers() {
   const systemListEl = document.getElementById("number-system-list");
@@ -819,6 +853,7 @@ function renderNumbers() {
         <span class="hanja-meaning">${escapeHtml(c.meaning)}</span>
         <span class="counter-type">${escapeHtml(c.numberType)}</span>
         <span class="hanja-japanese counter-example">${escapeHtml(c.example)}</span>`;
+      li.appendChild(buildKnownToggle("number", c.word));
       counterList.appendChild(li);
     });
     card.appendChild(counterList);
@@ -827,6 +862,7 @@ function renderNumbers() {
 
   listEl.appendChild(fragment);
   emptyStateEl.hidden = filteredCounters.length !== 0;
+  updateSectionStatsDisplay("number");
 }
 
 document.getElementById("number-search").addEventListener("input", (e) => {
@@ -837,6 +873,8 @@ document.getElementById("number-search").addEventListener("input", (e) => {
 // ---------- 慣用句セクション ----------
 
 const idiomState = { query: "" };
+
+registerSectionStats("idiom", "idiom-stats", () => IDIOMS.flatMap((group) => group.items.map((item) => item.phrase)));
 
 function renderIdioms() {
   const listEl = document.getElementById("idiom-list");
@@ -874,6 +912,7 @@ function renderIdioms() {
         </div>
         <p class="meaning">${escapeHtml(item.meaning)}</p>
         <p class="example-ko">${escapeHtml(item.example)}</p>`;
+      li.appendChild(buildKnownToggle("idiom", item.phrase));
       itemList.appendChild(li);
     });
     card.appendChild(itemList);
@@ -883,6 +922,7 @@ function renderIdioms() {
 
   listEl.appendChild(fragment);
   emptyStateEl.hidden = visibleCount !== 0;
+  updateSectionStatsDisplay("idiom");
 }
 
 document.getElementById("idiom-search").addEventListener("input", (e) => {
@@ -893,6 +933,10 @@ document.getElementById("idiom-search").addEventListener("input", (e) => {
 // ---------- 擬声語・擬態語セクション ----------
 
 const onomatopoeiaState = { query: "" };
+
+registerSectionStats("onomatopoeia", "onomatopoeia-stats", () =>
+  ONOMATOPOEIA.flatMap((group) => group.items.map((item) => `${group.id}_${item.word}`))
+);
 
 function renderOnomatopoeia() {
   const listEl = document.getElementById("onomatopoeia-list");
@@ -924,6 +968,7 @@ function renderOnomatopoeia() {
       li.innerHTML = `<span class="hanja-korean">${escapeHtml(item.word)}</span>
         <span class="onomatopoeia-katakana">${escapeHtml(item.katakana)}</span>
         <span class="hanja-meaning">${escapeHtml(item.meaning)}</span>`;
+      li.appendChild(buildKnownToggle("onomatopoeia", `${group.id}_${item.word}`));
       itemList.appendChild(li);
     });
     card.appendChild(itemList);
@@ -933,6 +978,7 @@ function renderOnomatopoeia() {
 
   listEl.appendChild(fragment);
   emptyStateEl.hidden = visibleCount !== 0;
+  updateSectionStatsDisplay("onomatopoeia");
 }
 
 document.getElementById("onomatopoeia-search").addEventListener("input", (e) => {
