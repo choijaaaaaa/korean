@@ -596,43 +596,6 @@ function renderNumbers() {
   listEl.appendChild(fragment);
 }
 
-// ---------- 新造語・流行語セクション ----------
-
-function renderSlang() {
-  const listEl = document.getElementById("slang-list");
-  listEl.innerHTML = "";
-  const fragment = document.createDocumentFragment();
-
-  SLANG.forEach((group) => {
-    const card = document.createElement("article");
-    card.className = "pattern-card";
-
-    const title = document.createElement("h3");
-    title.textContent = group.era;
-    card.appendChild(title);
-
-    const termList = document.createElement("ul");
-    termList.className = "slang-term-list";
-    group.terms.forEach((t) => {
-      const li = document.createElement("li");
-      li.className = "slang-term-item";
-      li.innerHTML = `<div class="slang-term-head">
-          <span class="hanja-korean">${escapeHtml(t.term)}</span>
-          <span class="katakana-reading slang-katakana">${escapeHtml(t.katakana)}</span>
-        </div>
-        <p class="meaning">${escapeHtml(t.meaning)}</p>
-        <p class="pattern-explanation">${escapeHtml(t.origin)}</p>
-        <p class="example-ko">${escapeHtml(t.example)}</p>`;
-      termList.appendChild(li);
-    });
-    card.appendChild(termList);
-
-    fragment.appendChild(card);
-  });
-
-  listEl.appendChild(fragment);
-}
-
 // ---------- セクション切り替え ----------
 
 const sections = {
@@ -643,7 +606,6 @@ const sections = {
   irregular: document.getElementById("irregular-section"),
   honorific: document.getElementById("honorific-section"),
   number: document.getElementById("number-section"),
-  slang: document.getElementById("slang-section"),
 };
 
 const sectionRenderers = {
@@ -653,7 +615,6 @@ const sectionRenderers = {
   irregular: renderIrregulars,
   honorific: renderHonorifics,
   number: renderNumbers,
-  slang: renderSlang,
 };
 
 const renderedSections = new Set();

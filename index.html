@@ -21,7 +21,6 @@
     <button class="section-tab" data-section="irregular" aria-pressed="false">🔀 不規則活用</button>
     <button class="section-tab" data-section="honorific" aria-pressed="false">🙏 敬語</button>
     <button class="section-tab" data-section="number" aria-pressed="false">🔢 数詞・助数詞</button>
-    <button class="section-tab" data-section="slang" aria-pressed="false">🔥 新造語・流行語</button>
   </nav>
 
   <!-- ---------- 単語セクション ---------- -->
@@ -140,15 +139,6 @@
     <div id="counter-list" class="pattern-grid"></div>
   </section>
 
-  <!-- ---------- 新造語・流行語セクション ---------- -->
-  <section id="slang-section" class="app-section" hidden>
-    <p class="section-intro">
-      教科書には載らないが、SNSや会話でよく使われる新造語・流行語を時代順にまとめた。
-      流行した時期を明記しているので、今も使われる表現と一時的に流行した表現を区別できる。
-    </p>
-    <div id="slang-list" class="pattern-grid"></div>
-  </section>
-
   <template id="word-card-template">
     <article class="word-card">
       <div class="word-card-top">
@@ -215,7 +205,6 @@
   <script src="irregular-data.js"></script>
   <script src="honorific-data.js"></script>
   <script src="number-data.js"></script>
-  <script src="slang-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

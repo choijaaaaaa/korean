@@ -630,47 +630,6 @@ body {
   line-height: 1.6;
 }
 
-/* ---------- 新造語・流行語セクション ---------- */
-
-.slang-term-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: var(--space-3);
-}
-
-.slang-term-item {
-  padding: var(--space-3);
-  background: var(--color-bg);
-  border-radius: var(--space-1);
-}
-
-.slang-term-item .meaning {
-  margin: var(--space-1) 0;
-}
-
-.slang-term-item .pattern-explanation {
-  margin: 0 0 var(--space-2);
-}
-
-.slang-term-item .example-ko {
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-}
-
-.slang-term-head {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-  flex-wrap: wrap;
-}
-
-.slang-katakana {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
 /* ---------- 敬語セクション ---------- */
 
 .honorific-level-grid {
