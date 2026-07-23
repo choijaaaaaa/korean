@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>韓国語学習帳 | TOPIK 1級〜6級</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v2" />
 </head>
 <body>
   <header class="app-header">
@@ -89,6 +89,7 @@
         aria-label="漢字語検索"
       />
     </div>
+    <p id="hanja-stats" class="section-stats"></p>
     <div id="hanja-list" class="pattern-grid"></div>
     <p id="hanja-empty-state" class="empty-state" hidden>検索結果に該当する漢字語がありません。</p>
 
@@ -96,6 +97,7 @@
     <p class="section-intro">
       同じ漢字なのに、韓国語と日本語で意味や使い方が違う語がある。漢字だけで意味を早合点すると誤解しやすい代表例。
     </p>
+    <p id="falsefriends-stats" class="section-stats"></p>
     <div id="false-friends-list" class="pattern-grid"></div>
   </section>
 
@@ -113,6 +115,7 @@
     <div class="toolbar">
       <input type="search" id="grammar-search" class="search-input" placeholder="文法パターン・意味で検索" aria-label="文法検索" />
     </div>
+    <p id="grammar-stats" class="section-stats"></p>
     <div id="grammar-list" class="pattern-grid"></div>
     <p id="grammar-empty-state" class="empty-state" hidden>検索結果に該当する文法パターンがありません。</p>
   </section>
@@ -125,6 +128,7 @@
     <div class="toolbar">
       <input type="search" id="pronunciation-search" class="search-input" placeholder="規則名・単語で検索" aria-label="発音規則検索" />
     </div>
+    <p id="pronunciation-stats" class="section-stats"></p>
     <div id="pronunciation-list" class="pattern-grid"></div>
     <p id="pronunciation-empty-state" class="empty-state" hidden>検索結果に該当する例がありません。</p>
   </section>
@@ -229,6 +233,14 @@
   <template id="quiz-card-template">
     <article class="quiz-card">
       <span class="level-badge"></span>
+      <div class="box-indicator" aria-label="復習の習熟度">
+        <span class="box-segment" data-box="0"></span>
+        <span class="box-segment" data-box="1"></span>
+        <span class="box-segment" data-box="2"></span>
+        <span class="box-segment" data-box="3"></span>
+        <span class="box-segment" data-box="4"></span>
+      </div>
+      <p class="box-label"></p>
 
       <div class="quiz-question">
         <p class="hangul-line">
@@ -259,17 +271,17 @@
     </article>
   </template>
 
-  <script src="data.js"></script>
-  <script src="progress.js"></script>
-  <script src="hanja-data.js"></script>
-  <script src="false-friends-data.js"></script>
-  <script src="grammar-data.js"></script>
-  <script src="pronunciation-data.js"></script>
-  <script src="irregular-data.js"></script>
-  <script src="honorific-data.js"></script>
-  <script src="number-data.js"></script>
-  <script src="idiom-data.js"></script>
-  <script src="onomatopoeia-data.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js?v2"></script>
+  <script src="progress.js?v2"></script>
+  <script src="hanja-data.js?v2"></script>
+  <script src="false-friends-data.js?v2"></script>
+  <script src="grammar-data.js?v2"></script>
+  <script src="pronunciation-data.js?v2"></script>
+  <script src="irregular-data.js?v2"></script>
+  <script src="honorific-data.js?v2"></script>
+  <script src="number-data.js?v2"></script>
+  <script src="idiom-data.js?v2"></script>
+  <script src="onomatopoeia-data.js?v2"></script>
+  <script src="app.js?v2"></script>
 </body>
 </html>

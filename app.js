@@ -65,6 +65,40 @@ function textIncludes(text, query) {
   return String(text || "").toLowerCase().includes(query);
 }
 
+// WHY: 文法・漢字語・慣用句などの一覧セクションは常に内容が見えているため、
+// 単語のクイズ形式（隠して自己採点）ではなく「既知」を押すだけの軽量トグルで進捗を管理する。
+function buildKnownToggle(section, id) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "item-check-btn";
+  const applyState = (known) => {
+    btn.textContent = known ? "✅ 既知" : "☆ 未チェック";
+    btn.setAttribute("aria-pressed", String(known));
+  };
+  applyState(isItemKnown(section, id));
+  btn.addEventListener("click", () => {
+    const nowKnown = toggleItemKnown(section, id);
+    applyState(nowKnown);
+    updateSectionStatsDisplay(section);
+  });
+  return btn;
+}
+
+const sectionStatsConfig = {};
+
+function registerSectionStats(section, elId, getAllIds) {
+  sectionStatsConfig[section] = { elId, getAllIds };
+}
+
+function updateSectionStatsDisplay(section) {
+  const config = sectionStatsConfig[section];
+  if (!config) return;
+  const el = document.getElementById(config.elId);
+  if (!el) return;
+  const stats = getSectionStats(section, config.getAllIds());
+  el.textContent = `✅ 既知 ${stats.known} / ${stats.total}`;
+}
+
 // WHY: 例文中の見出し語は活用形（語尾変化・音韻変化など）で現れることが多く
 // 完全一致しない場合がある。見出し語の末尾から最大2文字まで削りながらマッチを試みる。
 function highlightExample(example, hangul) {
@@ -141,12 +175,30 @@ function buildWordCard(word) {
   return node;
 }
 
+function renderBoxIndicator(node, word) {
+  const progress = getWordProgress(word);
+  const box = progress ? progress.box : -1;
+  node.querySelectorAll(".box-segment").forEach((seg, i) => {
+    seg.classList.toggle("is-filled", i <= box);
+  });
+  const labelEl = node.querySelector(".box-label");
+  if (!progress) {
+    labelEl.textContent = "🆕 未学習";
+  } else if (box >= BOX_INTERVAL_DAYS.length - 1) {
+    labelEl.textContent = "🏆 マスター済み";
+  } else {
+    labelEl.textContent = `📦 復習ボックス ${box + 1}/${BOX_INTERVAL_DAYS.length}`;
+  }
+}
+
 function buildQuizCard(word) {
   const node = quizTemplate.content.firstElementChild.cloneNode(true);
 
   const badge = node.querySelector(".level-badge");
   badge.textContent = `${word.level}級`;
   badge.dataset.level = word.level;
+
+  renderBoxIndicator(node, word);
 
   node.querySelector(".hangul").textContent = word.hangul;
   node.querySelector(".example-ko").innerHTML = highlightExample(word.example, word.hangul);
