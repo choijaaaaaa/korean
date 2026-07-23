@@ -20,6 +20,7 @@
     <button class="section-tab" data-section="pronunciation" aria-pressed="false">🔊 発音規則</button>
     <button class="section-tab" data-section="irregular" aria-pressed="false">🔀 不規則活用</button>
     <button class="section-tab" data-section="honorific" aria-pressed="false">🙏 敬語</button>
+    <button class="section-tab" data-section="number" aria-pressed="false">🔢 数詞・助数詞</button>
     <button class="section-tab" data-section="slang" aria-pressed="false">🔥 新造語・流行語</button>
   </nav>
 
@@ -129,6 +130,16 @@
     <div id="honorific-list" class="pattern-grid"></div>
   </section>
 
+  <!-- ---------- 数詞・助数詞セクション ---------- -->
+  <section id="number-section" class="app-section" hidden>
+    <p class="section-intro">
+      韓国語には固有語数詞と漢字語数詞の二つの数え方がある。どちらを使うかは助数詞ごとに決まっているので、
+      助数詞とセットで覚える必要がある。
+    </p>
+    <div id="number-system-list" class="pattern-grid"></div>
+    <div id="counter-list" class="pattern-grid"></div>
+  </section>
+
   <!-- ---------- 新造語・流行語セクション ---------- -->
   <section id="slang-section" class="app-section" hidden>
     <p class="section-intro">
@@ -203,6 +214,7 @@
   <script src="pronunciation-data.js"></script>
   <script src="irregular-data.js"></script>
   <script src="honorific-data.js"></script>
+  <script src="number-data.js"></script>
   <script src="slang-data.js"></script>
   <script src="app.js"></script>
 </body>

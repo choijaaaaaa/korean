@@ -531,6 +531,71 @@ function renderHonorifics() {
   listEl.appendChild(fragment);
 }
 
+// ---------- 数詞・助数詞セクション ----------
+
+function renderNumbers() {
+  const systemListEl = document.getElementById("number-system-list");
+  systemListEl.innerHTML = "";
+  const systemFragment = document.createDocumentFragment();
+
+  NUMBER_SYSTEMS.forEach((system) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card";
+
+    const title = document.createElement("h3");
+    title.textContent = system.name;
+    card.appendChild(title);
+
+    const usage = document.createElement("p");
+    usage.className = "pattern-explanation";
+    usage.textContent = system.usage;
+    card.appendChild(usage);
+
+    const grid = document.createElement("ul");
+    grid.className = "number-grid";
+    system.numbers.forEach((n) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="hanja-korean">${escapeHtml(n.hangul)}</span>
+        <span class="hanja-meaning">${escapeHtml(n.value)}</span>`;
+      grid.appendChild(li);
+    });
+    card.appendChild(grid);
+
+    const note = document.createElement("p");
+    note.className = "irregular-note";
+    note.textContent = system.note;
+    card.appendChild(note);
+
+    systemFragment.appendChild(card);
+  });
+  systemListEl.appendChild(systemFragment);
+
+  const listEl = document.getElementById("counter-list");
+  listEl.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  const card = document.createElement("article");
+  card.className = "pattern-card";
+  const title = document.createElement("h3");
+  title.textContent = "主な助数詞（単位名詞）";
+  card.appendChild(title);
+
+  const counterList = document.createElement("ul");
+  counterList.className = "hanja-pair-list";
+  COUNTERS.forEach((c) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="hanja-korean">${escapeHtml(c.word)}</span>
+      <span class="hanja-meaning">${escapeHtml(c.meaning)}</span>
+      <span class="counter-type">${escapeHtml(c.numberType)}</span>
+      <span class="hanja-japanese counter-example">${escapeHtml(c.example)}</span>`;
+    counterList.appendChild(li);
+  });
+  card.appendChild(counterList);
+  fragment.appendChild(card);
+
+  listEl.appendChild(fragment);
+}
+
 // ---------- 新造語・流行語セクション ----------
 
 function renderSlang() {
@@ -577,6 +642,7 @@ const sections = {
   pronunciation: document.getElementById("pronunciation-section"),
   irregular: document.getElementById("irregular-section"),
   honorific: document.getElementById("honorific-section"),
+  number: document.getElementById("number-section"),
   slang: document.getElementById("slang-section"),
 };
 
@@ -586,6 +652,7 @@ const sectionRenderers = {
   pronunciation: renderPronunciationRules,
   irregular: renderIrregulars,
   honorific: renderHonorifics,
+  number: renderNumbers,
   slang: renderSlang,
 };
 
