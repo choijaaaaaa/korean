@@ -673,6 +673,38 @@ function renderIdioms() {
   listEl.appendChild(fragment);
 }
 
+// ---------- 擬声語・擬態語セクション ----------
+
+function renderOnomatopoeia() {
+  const listEl = document.getElementById("onomatopoeia-list");
+  listEl.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  ONOMATOPOEIA.forEach((group) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card";
+
+    const title = document.createElement("h3");
+    title.textContent = group.theme;
+    card.appendChild(title);
+
+    const itemList = document.createElement("ul");
+    itemList.className = "hanja-pair-list";
+    group.items.forEach((item) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="hanja-korean">${escapeHtml(item.word)}</span>
+        <span class="onomatopoeia-katakana">${escapeHtml(item.katakana)}</span>
+        <span class="hanja-meaning">${escapeHtml(item.meaning)}</span>`;
+      itemList.appendChild(li);
+    });
+    card.appendChild(itemList);
+
+    fragment.appendChild(card);
+  });
+
+  listEl.appendChild(fragment);
+}
+
 // ---------- セクション切り替え ----------
 
 const sections = {
@@ -684,6 +716,7 @@ const sections = {
   honorific: document.getElementById("honorific-section"),
   number: document.getElementById("number-section"),
   idiom: document.getElementById("idiom-section"),
+  onomatopoeia: document.getElementById("onomatopoeia-section"),
 };
 
 const sectionRenderers = {
@@ -694,6 +727,7 @@ const sectionRenderers = {
   honorific: renderHonorifics,
   number: renderNumbers,
   idiom: renderIdioms,
+  onomatopoeia: renderOnomatopoeia,
 };
 
 const renderedSections = new Set();

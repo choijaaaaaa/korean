@@ -22,6 +22,7 @@
     <button class="section-tab" data-section="honorific" aria-pressed="false">🙏 敬語</button>
     <button class="section-tab" data-section="number" aria-pressed="false">🔢 数詞・助数詞</button>
     <button class="section-tab" data-section="idiom" aria-pressed="false">💬 慣用句</button>
+    <button class="section-tab" data-section="onomatopoeia" aria-pressed="false">✨ 擬声語・擬態語</button>
   </nav>
 
   <!-- ---------- 単語セクション ---------- -->
@@ -155,6 +156,15 @@
     <div id="idiom-list" class="pattern-grid"></div>
   </section>
 
+  <!-- ---------- 擬声語・擬態語セクション ---------- -->
+  <section id="onomatopoeia-section" class="app-section" hidden>
+    <p class="section-intro">
+      韓国語は日本語よりも擬声語・擬態語の体系が豊富で、対応する日本語表現がない場合も多い。
+      意味カテゴリー別にまとめて練習しよう。
+    </p>
+    <div id="onomatopoeia-list" class="pattern-grid"></div>
+  </section>
+
   <template id="word-card-template">
     <article class="word-card">
       <div class="word-card-top">
@@ -223,6 +233,7 @@
   <script src="honorific-data.js"></script>
   <script src="number-data.js"></script>
   <script src="idiom-data.js"></script>
+  <script src="onomatopoeia-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
