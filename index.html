@@ -21,6 +21,7 @@
     <button class="section-tab" data-section="irregular" aria-pressed="false">🔀 不規則活用</button>
     <button class="section-tab" data-section="honorific" aria-pressed="false">🙏 敬語</button>
     <button class="section-tab" data-section="number" aria-pressed="false">🔢 数詞・助数詞</button>
+    <button class="section-tab" data-section="idiom" aria-pressed="false">💬 慣用句</button>
   </nav>
 
   <!-- ---------- 単語セクション ---------- -->
@@ -145,6 +146,15 @@
     <div id="counter-list" class="pattern-grid"></div>
   </section>
 
+  <!-- ---------- 慣用句セクション ---------- -->
+  <section id="idiom-section" class="app-section" hidden>
+    <p class="section-intro">
+      直訳では意味が分からない、複数の単語が組み合わさった慣用句。四字熟語は単語セクションに含まれているため、
+      ここでは体の部位を使った表現などをテーマ別にまとめた。
+    </p>
+    <div id="idiom-list" class="pattern-grid"></div>
+  </section>
+
   <template id="word-card-template">
     <article class="word-card">
       <div class="word-card-top">
@@ -212,6 +222,7 @@
   <script src="irregular-data.js"></script>
   <script src="honorific-data.js"></script>
   <script src="number-data.js"></script>
+  <script src="idiom-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

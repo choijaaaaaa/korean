@@ -637,6 +637,42 @@ function renderNumbers() {
   listEl.appendChild(fragment);
 }
 
+// ---------- 慣用句セクション ----------
+
+function renderIdioms() {
+  const listEl = document.getElementById("idiom-list");
+  listEl.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  IDIOMS.forEach((group) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card";
+
+    const title = document.createElement("h3");
+    title.textContent = group.theme;
+    card.appendChild(title);
+
+    const itemList = document.createElement("ul");
+    itemList.className = "idiom-item-list";
+    group.items.forEach((item) => {
+      const li = document.createElement("li");
+      li.className = "idiom-item";
+      li.innerHTML = `<div class="idiom-head">
+          <span class="hanja-korean">${escapeHtml(item.phrase)}</span>
+          <span class="idiom-literal">（直訳: ${escapeHtml(item.literal)}）</span>
+        </div>
+        <p class="meaning">${escapeHtml(item.meaning)}</p>
+        <p class="example-ko">${escapeHtml(item.example)}</p>`;
+      itemList.appendChild(li);
+    });
+    card.appendChild(itemList);
+
+    fragment.appendChild(card);
+  });
+
+  listEl.appendChild(fragment);
+}
+
 // ---------- セクション切り替え ----------
 
 const sections = {
@@ -647,6 +683,7 @@ const sections = {
   irregular: document.getElementById("irregular-section"),
   honorific: document.getElementById("honorific-section"),
   number: document.getElementById("number-section"),
+  idiom: document.getElementById("idiom-section"),
 };
 
 const sectionRenderers = {
@@ -656,6 +693,7 @@ const sectionRenderers = {
   irregular: renderIrregulars,
   honorific: renderHonorifics,
   number: renderNumbers,
+  idiom: renderIdioms,
 };
 
 const renderedSections = new Set();

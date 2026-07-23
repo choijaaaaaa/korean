@@ -715,3 +715,40 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- 慣用句セクション ---------- */
+
+.idiom-item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.idiom-item {
+  padding: var(--space-3);
+  background: var(--color-bg);
+  border-radius: var(--space-1);
+}
+
+.idiom-item .meaning {
+  margin: var(--space-1) 0;
+}
+
+.idiom-item .example-ko {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.idiom-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.idiom-literal {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
