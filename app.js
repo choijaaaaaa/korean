@@ -225,6 +225,9 @@ function render() {
   }
 }
 
+// WHY: マスター済み（box満タン）は反映まで数週間かかり、押しても即座に数字が動かないため
+// 「反応していないように見える」という誤解を招く。レベルタブは押すたびに即動く「学習済み」数を表示し、
+// 長期的なマスター状況は上部の統計バー（学習済み・マスター済み両方表示）で確認する構成にする。
 function updateLevelTabLabels() {
   document.querySelectorAll(".level-tab").forEach((tab) => {
     if (!tab.dataset.baseLabel) {
@@ -233,10 +236,10 @@ function updateLevelTabLabels() {
     const level = tab.dataset.level;
     if (level === "ALL") {
       const stats = getOverallStats();
-      tab.textContent = `${tab.dataset.baseLabel}（${stats.mastered}/${VOCAB.length}）`;
+      tab.textContent = `${tab.dataset.baseLabel}（${stats.studied}/${VOCAB.length}）`;
     } else {
       const stats = getLevelStats(level);
-      tab.textContent = `${tab.dataset.baseLabel}（${stats.mastered}/${stats.total}）`;
+      tab.textContent = `${tab.dataset.baseLabel}（${stats.studied}/${stats.total}）`;
     }
   });
 }
