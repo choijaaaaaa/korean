@@ -7,6 +7,7 @@ const state = {
   mode: "card", // "card" | "list"
   order: VOCAB.map((_, i) => i),
   cardIndex: 0,
+  reviewMode: false,
 };
 
 function shuffleOrder() {
@@ -44,6 +45,7 @@ function getFilteredWords() {
   const source = state.order.map((i) => VOCAB[i]).filter((word) => state.level === "ALL" || word.level === state.level);
 
   return source.filter((word) => {
+    if (state.reviewMode && !isDueForReview(word)) return false;
     if (!query) return true;
     return (
       word.hangul.toLowerCase().includes(query) ||
@@ -169,6 +171,17 @@ function buildQuizCard(word) {
 
   renderBreakdown(node.querySelector(".breakdown-list"), word.breakdown);
 
+  const wrongBtn = node.querySelector(".srs-wrong-btn");
+  const knownBtn = node.querySelector(".srs-known-btn");
+  const handleSrsChoice = (knew) => {
+    markWord(word, knew);
+    updateStatsUI();
+    state.cardIndex += 1;
+    render();
+  };
+  wrongBtn.addEventListener("click", () => handleSrsChoice(false));
+  knownBtn.addEventListener("click", () => handleSrsChoice(true));
+
   return node;
 }
 
@@ -208,6 +221,34 @@ function render() {
   }
 }
 
+function updateLevelTabLabels() {
+  document.querySelectorAll(".level-tab").forEach((tab) => {
+    if (!tab.dataset.baseLabel) {
+      tab.dataset.baseLabel = tab.textContent;
+    }
+    const level = tab.dataset.level;
+    if (level === "ALL") {
+      const stats = getOverallStats();
+      tab.textContent = `${tab.dataset.baseLabel}（${stats.mastered}/${VOCAB.length}）`;
+    } else {
+      const stats = getLevelStats(level);
+      tab.textContent = `${tab.dataset.baseLabel}（${stats.mastered}/${stats.total}）`;
+    }
+  });
+}
+
+function renderStatsBar() {
+  const statsBar = document.getElementById("stats-bar");
+  if (!statsBar) return;
+  const stats = getOverallStats();
+  statsBar.textContent = `📊 学習済み ${stats.studied.toLocaleString()}語 ・ マスター済み ${stats.mastered.toLocaleString()}語 ・ 今日の復習 ${stats.todayCount}語 ・ 連続学習 ${stats.streak}日`;
+}
+
+function updateStatsUI() {
+  renderStatsBar();
+  updateLevelTabLabels();
+}
+
 document.querySelectorAll(".level-tab").forEach((tab) => {
   tab.addEventListener("click", () => {
     document.querySelectorAll(".level-tab").forEach((t) => {
@@ -220,6 +261,13 @@ document.querySelectorAll(".level-tab").forEach((tab) => {
     state.cardIndex = 0;
     render();
   });
+});
+
+document.getElementById("review-toggle").addEventListener("click", (e) => {
+  state.reviewMode = !state.reviewMode;
+  e.currentTarget.setAttribute("aria-pressed", String(state.reviewMode));
+  state.cardIndex = 0;
+  render();
 });
 
 document.getElementById("search-input").addEventListener("input", (e) => {
@@ -254,6 +302,7 @@ document.getElementById("card-next").addEventListener("click", () => {
 
 shuffleOrder();
 render();
+updateStatsUI();
 
 // ---------- 漢字語対応セクション ----------
 // WHY: パターン数が増えるとカードを全部開いたまま並べるとスクロールが膨大になるため、

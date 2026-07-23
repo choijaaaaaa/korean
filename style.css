@@ -97,6 +97,15 @@ body {
   font-size: 0.95rem;
 }
 
+.stats-bar {
+  max-width: 900px;
+  margin: 0 auto var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
 .section-tabs {
   display: flex;
   justify-content: center;
@@ -616,6 +625,36 @@ body {
 
 .quiz-answer .example-meaning {
   margin: var(--space-1) 0 0;
+}
+
+.srs-buttons {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--color-border);
+}
+
+.srs-buttons button {
+  flex: 1 1 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.srs-wrong-btn:hover {
+  border-color: var(--color-highlight);
+  color: var(--color-highlight);
+}
+
+.srs-known-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 /* ---------- 不規則活用セクション ---------- */

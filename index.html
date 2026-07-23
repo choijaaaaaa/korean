@@ -13,6 +13,8 @@
     <p class="subtitle">単語・漢字語対応・文法・発音規則で韓国語を勉強しよう</p>
   </header>
 
+  <div id="stats-bar" class="stats-bar" aria-live="polite"></div>
+
   <nav class="section-tabs" aria-label="学習セクション選択">
     <button class="section-tab is-active" data-section="word" aria-pressed="true">📖 単語</button>
     <button class="section-tab" data-section="hanja" aria-pressed="false">🈂️ 漢字語対応</button>
@@ -48,6 +50,7 @@
       <div class="toolbar-buttons">
         <button id="mode-toggle" class="toolbar-btn" aria-pressed="false">📚 単語帳表示</button>
         <button id="shuffle-btn" class="toolbar-btn" aria-label="単語の順番をシャッフル">🔀 シャッフル</button>
+        <button id="review-toggle" class="toolbar-btn" aria-pressed="false">🔁 復習モード</button>
       </div>
     </div>
 
@@ -220,11 +223,16 @@
           <p class="example-meaning"></p>
           <ul class="breakdown-list" hidden></ul>
         </div>
+        <div class="srs-buttons">
+          <button class="srs-wrong-btn" type="button">😵 わからなかった</button>
+          <button class="srs-known-btn" type="button">😊 覚えた</button>
+        </div>
       </div>
     </article>
   </template>
 
   <script src="data.js"></script>
+  <script src="progress.js"></script>
   <script src="hanja-data.js"></script>
   <script src="false-friends-data.js"></script>
   <script src="grammar-data.js"></script>
