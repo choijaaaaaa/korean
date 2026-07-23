@@ -110,7 +110,11 @@
       <button class="grammar-level-tab" data-level="5" aria-pressed="false">5級</button>
       <button class="grammar-level-tab" data-level="6" aria-pressed="false">6級</button>
     </nav>
+    <div class="toolbar">
+      <input type="search" id="grammar-search" class="search-input" placeholder="文法パターン・意味で検索" aria-label="文法検索" />
+    </div>
     <div id="grammar-list" class="pattern-grid"></div>
+    <p id="grammar-empty-state" class="empty-state" hidden>検索結果に該当する文法パターンがありません。</p>
   </section>
 
   <!-- ---------- 発音規則セクション ---------- -->
@@ -118,7 +122,11 @@
     <p class="section-intro">
       ハングルは表音文字ですが、パッチムの後に続く音によって表記と実際の発音が変わることがよくあります。
     </p>
+    <div class="toolbar">
+      <input type="search" id="pronunciation-search" class="search-input" placeholder="規則名・単語で検索" aria-label="発音規則検索" />
+    </div>
     <div id="pronunciation-list" class="pattern-grid"></div>
+    <p id="pronunciation-empty-state" class="empty-state" hidden>検索結果に該当する例がありません。</p>
   </section>
 
   <!-- ---------- 不規則活用セクション ---------- -->
@@ -127,7 +135,11 @@
       韓国語の用言（動詞・形容詞）の中には、語幹に語尾がつくとき形が変わる「不規則活用」がある。
       形が似ている規則活用の語と対比しながら覚えると混同しにくい。
     </p>
+    <div class="toolbar">
+      <input type="search" id="irregular-search" class="search-input" placeholder="活用の種類・単語で検索" aria-label="不規則活用検索" />
+    </div>
     <div id="irregular-list" class="pattern-grid"></div>
+    <p id="irregular-empty-state" class="empty-state" hidden>検索結果に該当する例がありません。</p>
   </section>
 
   <!-- ---------- 敬語セクション ---------- -->
@@ -137,7 +149,11 @@
       文法規則（-시-）だけでなく、単語自体がまるごと入れ替わる語彙敬語も多いので、対で覚える必要がある。
     </p>
     <div id="speech-level-list" class="pattern-grid honorific-level-grid"></div>
+    <div class="toolbar">
+      <input type="search" id="honorific-search" class="search-input" placeholder="単語・意味で検索" aria-label="敬語検索" />
+    </div>
     <div id="honorific-list" class="pattern-grid"></div>
+    <p id="honorific-empty-state" class="empty-state" hidden>検索結果に該当する語がありません。</p>
   </section>
 
   <!-- ---------- 数詞・助数詞セクション ---------- -->
@@ -147,7 +163,11 @@
       助数詞とセットで覚える必要がある。
     </p>
     <div id="number-system-list" class="pattern-grid"></div>
+    <div class="toolbar">
+      <input type="search" id="number-search" class="search-input" placeholder="助数詞・意味で検索" aria-label="助数詞検索" />
+    </div>
     <div id="counter-list" class="pattern-grid"></div>
+    <p id="number-empty-state" class="empty-state" hidden>検索結果に該当する助数詞がありません。</p>
   </section>
 
   <!-- ---------- 慣用句セクション ---------- -->
@@ -156,7 +176,11 @@
       直訳では意味が分からない、複数の単語が組み合わさった慣用句。四字熟語は単語セクションに含まれているため、
       ここでは体の部位を使った表現などをテーマ別にまとめた。
     </p>
+    <div class="toolbar">
+      <input type="search" id="idiom-search" class="search-input" placeholder="慣用句・意味で検索" aria-label="慣用句検索" />
+    </div>
     <div id="idiom-list" class="pattern-grid"></div>
+    <p id="idiom-empty-state" class="empty-state" hidden>検索結果に該当する慣用句がありません。</p>
   </section>
 
   <!-- ---------- 擬声語・擬態語セクション ---------- -->
@@ -165,7 +189,11 @@
       韓国語は日本語よりも擬声語・擬態語の体系が豊富で、対応する日本語表現がない場合も多い。
       意味カテゴリー別にまとめて練習しよう。
     </p>
+    <div class="toolbar">
+      <input type="search" id="onomatopoeia-search" class="search-input" placeholder="単語・意味で検索" aria-label="擬声語擬態語検索" />
+    </div>
     <div id="onomatopoeia-list" class="pattern-grid"></div>
+    <p id="onomatopoeia-empty-state" class="empty-state" hidden>検索結果に該当する語がありません。</p>
   </section>
 
   <template id="word-card-template">

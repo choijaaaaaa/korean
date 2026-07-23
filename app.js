@@ -61,6 +61,10 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function textIncludes(text, query) {
+  return String(text || "").toLowerCase().includes(query);
+}
+
 // WHY: 例文中の見出し語は活用形（語尾変化・音韻変化など）で現れることが多く
 // 完全一致しない場合がある。見出し語の末尾から最大2文字まで削りながらマッチを試みる。
 function highlightExample(example, hangul) {
@@ -427,14 +431,24 @@ function renderHanjaSection() {
 
 // ---------- 文法パターンセクション ----------
 
-const grammarState = { level: "ALL" };
+const grammarState = { level: "ALL", query: "" };
 
 function renderGrammarPatterns() {
   const listEl = document.getElementById("grammar-list");
+  const emptyStateEl = document.getElementById("grammar-empty-state");
   listEl.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
-  const filtered = GRAMMAR.filter((g) => grammarState.level === "ALL" || g.level === grammarState.level);
+  const query = grammarState.query.trim().toLowerCase();
+  const filtered = GRAMMAR.filter((g) => grammarState.level === "ALL" || g.level === grammarState.level).filter((g) => {
+    if (!query) return true;
+    return (
+      textIncludes(g.pattern, query) ||
+      textIncludes(g.title, query) ||
+      textIncludes(g.explanation, query) ||
+      g.examples.some((ex) => textIncludes(ex.korean, query) || textIncludes(ex.japanese, query))
+    );
+  });
 
   filtered.forEach((g) => {
     const card = document.createElement("article");
@@ -463,6 +477,7 @@ function renderGrammarPatterns() {
   });
 
   listEl.appendChild(fragment);
+  emptyStateEl.hidden = filtered.length !== 0;
 }
 
 document.querySelectorAll(".grammar-level-tab").forEach((tab) => {
@@ -478,14 +493,32 @@ document.querySelectorAll(".grammar-level-tab").forEach((tab) => {
   });
 });
 
+document.getElementById("grammar-search").addEventListener("input", (e) => {
+  grammarState.query = e.target.value;
+  renderGrammarPatterns();
+});
+
 // ---------- 発音規則セクション ----------
+
+const pronunciationState = { query: "" };
 
 function renderPronunciationRules() {
   const listEl = document.getElementById("pronunciation-list");
+  const emptyStateEl = document.getElementById("pronunciation-empty-state");
   listEl.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
+  const query = pronunciationState.query.trim().toLowerCase();
+  let visibleCount = 0;
+
   PRONUNCIATION_RULES.forEach((rule) => {
+    const ruleMatches = !query || textIncludes(rule.name, query) || textIncludes(rule.explanation, query);
+    const examples = !query || ruleMatches
+      ? rule.examples
+      : rule.examples.filter((ex) => textIncludes(ex.written, query) || textIncludes(ex.pronounced, query) || textIncludes(ex.meaning, query));
+    if (query && examples.length === 0) return;
+    visibleCount += 1;
+
     const card = document.createElement("article");
     card.className = "pattern-card";
 
@@ -500,7 +533,7 @@ function renderPronunciationRules() {
 
     const exampleList = document.createElement("ul");
     exampleList.className = "example-pair-list";
-    rule.examples.forEach((ex) => {
+    examples.forEach((ex) => {
       const li = document.createElement("li");
       li.innerHTML = `<span class="example-pair-ko">${escapeHtml(ex.written)} → [${escapeHtml(ex.pronounced)}]</span>
         <span class="example-pair-ja">${escapeHtml(ex.meaning)}</span>`;
@@ -512,16 +545,35 @@ function renderPronunciationRules() {
   });
 
   listEl.appendChild(fragment);
+  emptyStateEl.hidden = visibleCount !== 0;
 }
+
+document.getElementById("pronunciation-search").addEventListener("input", (e) => {
+  pronunciationState.query = e.target.value;
+  renderPronunciationRules();
+});
 
 // ---------- 不規則活用セクション ----------
 
+const irregularState = { query: "" };
+
 function renderIrregulars() {
   const listEl = document.getElementById("irregular-list");
+  const emptyStateEl = document.getElementById("irregular-empty-state");
   listEl.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
+  const query = irregularState.query.trim().toLowerCase();
+  let visibleCount = 0;
+
   IRREGULARS.forEach((group) => {
+    const groupMatches = !query || textIncludes(group.name, query) || textIncludes(group.explanation, query);
+    const examples = !query || groupMatches
+      ? group.examples
+      : group.examples.filter((ex) => textIncludes(ex.hangul, query) || textIncludes(ex.meaning, query) || textIncludes(ex.change, query));
+    if (query && examples.length === 0) return;
+    visibleCount += 1;
+
     const card = document.createElement("article");
     card.className = "pattern-card";
 
@@ -536,7 +588,7 @@ function renderIrregulars() {
 
     const exampleList = document.createElement("ul");
     exampleList.className = "example-pair-list";
-    group.examples.forEach((ex) => {
+    examples.forEach((ex) => {
       const li = document.createElement("li");
       li.innerHTML = `<span class="example-pair-ko">${escapeHtml(ex.hangul)}（${escapeHtml(ex.meaning)}）</span>
         <span class="example-pair-ja">${escapeHtml(ex.change)}</span>`;
@@ -555,9 +607,17 @@ function renderIrregulars() {
   });
 
   listEl.appendChild(fragment);
+  emptyStateEl.hidden = visibleCount !== 0;
 }
 
+document.getElementById("irregular-search").addEventListener("input", (e) => {
+  irregularState.query = e.target.value;
+  renderIrregulars();
+});
+
 // ---------- 敬語セクション ----------
+
+const honorificState = { query: "" };
 
 function renderHonorifics() {
   const levelListEl = document.getElementById("speech-level-list");
@@ -587,10 +647,21 @@ function renderHonorifics() {
   levelListEl.appendChild(levelFragment);
 
   const listEl = document.getElementById("honorific-list");
+  const emptyStateEl = document.getElementById("honorific-empty-state");
   listEl.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
+  const query = honorificState.query.trim().toLowerCase();
+  let visibleCount = 0;
+
   HONORIFIC_WORDS.forEach((group) => {
+    const groupMatches = !query || textIncludes(group.name, query) || textIncludes(group.explanation, query);
+    const pairs = !query || groupMatches
+      ? group.pairs
+      : group.pairs.filter((p) => textIncludes(p.casual, query) || textIncludes(p.honorific, query) || textIncludes(p.meaning, query));
+    if (query && pairs.length === 0) return;
+    visibleCount += 1;
+
     const card = document.createElement("article");
     card.className = "pattern-card";
 
@@ -605,7 +676,7 @@ function renderHonorifics() {
 
     const pairList = document.createElement("ul");
     pairList.className = "hanja-pair-list";
-    group.pairs.forEach((pair) => {
+    pairs.forEach((pair) => {
       const li = document.createElement("li");
       li.innerHTML = `<span class="hanja-korean">${escapeHtml(pair.casual)}</span>
         <span class="hanja-arrow">→</span>
@@ -619,9 +690,17 @@ function renderHonorifics() {
   });
 
   listEl.appendChild(fragment);
+  emptyStateEl.hidden = visibleCount !== 0;
 }
 
+document.getElementById("honorific-search").addEventListener("input", (e) => {
+  honorificState.query = e.target.value;
+  renderHonorifics();
+});
+
 // ---------- 数詞・助数詞セクション ----------
+
+const numberState = { query: "" };
 
 function renderNumbers() {
   const systemListEl = document.getElementById("number-system-list");
@@ -661,39 +740,67 @@ function renderNumbers() {
   systemListEl.appendChild(systemFragment);
 
   const listEl = document.getElementById("counter-list");
+  const emptyStateEl = document.getElementById("number-empty-state");
   listEl.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
-  const card = document.createElement("article");
-  card.className = "pattern-card";
-  const title = document.createElement("h3");
-  title.textContent = "主な助数詞（単位名詞）";
-  card.appendChild(title);
+  const query = numberState.query.trim().toLowerCase();
+  const filteredCounters = COUNTERS.filter(
+    (c) => !query || textIncludes(c.word, query) || textIncludes(c.meaning, query) || textIncludes(c.example, query)
+  );
 
-  const counterList = document.createElement("ul");
-  counterList.className = "hanja-pair-list";
-  COUNTERS.forEach((c) => {
-    const li = document.createElement("li");
-    li.innerHTML = `<span class="hanja-korean">${escapeHtml(c.word)}</span>
-      <span class="hanja-meaning">${escapeHtml(c.meaning)}</span>
-      <span class="counter-type">${escapeHtml(c.numberType)}</span>
-      <span class="hanja-japanese counter-example">${escapeHtml(c.example)}</span>`;
-    counterList.appendChild(li);
-  });
-  card.appendChild(counterList);
-  fragment.appendChild(card);
+  if (filteredCounters.length > 0) {
+    const card = document.createElement("article");
+    card.className = "pattern-card";
+    const title = document.createElement("h3");
+    title.textContent = "主な助数詞（単位名詞）";
+    card.appendChild(title);
+
+    const counterList = document.createElement("ul");
+    counterList.className = "hanja-pair-list";
+    filteredCounters.forEach((c) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="hanja-korean">${escapeHtml(c.word)}</span>
+        <span class="hanja-meaning">${escapeHtml(c.meaning)}</span>
+        <span class="counter-type">${escapeHtml(c.numberType)}</span>
+        <span class="hanja-japanese counter-example">${escapeHtml(c.example)}</span>`;
+      counterList.appendChild(li);
+    });
+    card.appendChild(counterList);
+    fragment.appendChild(card);
+  }
 
   listEl.appendChild(fragment);
+  emptyStateEl.hidden = filteredCounters.length !== 0;
 }
+
+document.getElementById("number-search").addEventListener("input", (e) => {
+  numberState.query = e.target.value;
+  renderNumbers();
+});
 
 // ---------- 慣用句セクション ----------
 
+const idiomState = { query: "" };
+
 function renderIdioms() {
   const listEl = document.getElementById("idiom-list");
+  const emptyStateEl = document.getElementById("idiom-empty-state");
   listEl.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
+  const query = idiomState.query.trim().toLowerCase();
+  let visibleCount = 0;
+
   IDIOMS.forEach((group) => {
+    const items = !query
+      ? group.items
+      : group.items.filter(
+          (item) => textIncludes(item.phrase, query) || textIncludes(item.literal, query) || textIncludes(item.meaning, query) || textIncludes(item.example, query)
+        );
+    if (query && items.length === 0) return;
+    visibleCount += 1;
+
     const card = document.createElement("article");
     card.className = "pattern-card";
 
@@ -703,7 +810,7 @@ function renderIdioms() {
 
     const itemList = document.createElement("ul");
     itemList.className = "idiom-item-list";
-    group.items.forEach((item) => {
+    items.forEach((item) => {
       const li = document.createElement("li");
       li.className = "idiom-item";
       li.innerHTML = `<div class="idiom-head">
@@ -720,16 +827,34 @@ function renderIdioms() {
   });
 
   listEl.appendChild(fragment);
+  emptyStateEl.hidden = visibleCount !== 0;
 }
+
+document.getElementById("idiom-search").addEventListener("input", (e) => {
+  idiomState.query = e.target.value;
+  renderIdioms();
+});
 
 // ---------- 擬声語・擬態語セクション ----------
 
+const onomatopoeiaState = { query: "" };
+
 function renderOnomatopoeia() {
   const listEl = document.getElementById("onomatopoeia-list");
+  const emptyStateEl = document.getElementById("onomatopoeia-empty-state");
   listEl.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
+  const query = onomatopoeiaState.query.trim().toLowerCase();
+  let visibleCount = 0;
+
   ONOMATOPOEIA.forEach((group) => {
+    const items = !query
+      ? group.items
+      : group.items.filter((item) => textIncludes(item.word, query) || textIncludes(item.katakana, query) || textIncludes(item.meaning, query));
+    if (query && items.length === 0) return;
+    visibleCount += 1;
+
     const card = document.createElement("article");
     card.className = "pattern-card";
 
@@ -739,7 +864,7 @@ function renderOnomatopoeia() {
 
     const itemList = document.createElement("ul");
     itemList.className = "hanja-pair-list";
-    group.items.forEach((item) => {
+    items.forEach((item) => {
       const li = document.createElement("li");
       li.innerHTML = `<span class="hanja-korean">${escapeHtml(item.word)}</span>
         <span class="onomatopoeia-katakana">${escapeHtml(item.katakana)}</span>
@@ -752,7 +877,13 @@ function renderOnomatopoeia() {
   });
 
   listEl.appendChild(fragment);
+  emptyStateEl.hidden = visibleCount !== 0;
 }
+
+document.getElementById("onomatopoeia-search").addEventListener("input", (e) => {
+  onomatopoeiaState.query = e.target.value;
+  renderOnomatopoeia();
+});
 
 // ---------- セクション切り替え ----------
 
