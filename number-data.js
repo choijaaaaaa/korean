@@ -61,4 +61,6 @@ const COUNTERS = [
   { word: "통", meaning: "〜通（手紙・電話）", numberType: "native", example: "편지 두 통（手紙2通）" },
   { word: "곡", meaning: "〜曲", numberType: "sino", example: "노래 삼 곡（歌3曲）" },
   { word: "번째", meaning: "〜番目（順番）", numberType: "native", example: "첫 번째（1番目）／ 두 번째（2番目）" },
+  { word: "인분", meaning: "〜人前（食事の量）", numberType: "sino", example: "삼겹살 이 인분（サムギョプサル2人前）" },
+  { word: "학년", meaning: "〜年生（学年）", numberType: "sino", example: "삼 학년（3年生）" },
 ];

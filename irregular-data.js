@@ -39,6 +39,8 @@ const IRREGULARS = [
       { hangul: "낫다", meaning: "治る・ましだ", change: "나아요 / 나으면 / 나으니까" },
       { hangul: "잇다", meaning: "つなぐ", change: "이어요 / 이으면 / 이으니까" },
       { hangul: "붓다", meaning: "注ぐ・むくむ", change: "부어요 / 부으면 / 부으니까" },
+      { hangul: "젓다", meaning: "かき混ぜる", change: "저어요 / 저으면 / 저으니까" },
+      { hangul: "긋다", meaning: "線を引く", change: "그어요 / 그으면 / 그으니까" },
     ],
     regularNote: "웃다（笑う）、벗다（脱ぐ）、씻다（洗う）は規則活用（웃어요・벗어요・씻어요）。",
   },
