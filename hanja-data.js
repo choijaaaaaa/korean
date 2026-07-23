@@ -70,4 +70,17 @@ const HANJA_PATTERNS = [
       { hanja: "無理", korean: "무리", japanese: "むり", meaning: "無理" },
     ],
   },
+  {
+    id: "dueum",
+    pattern: "頭音法則：語頭の「라/러/로/료/리」「냐/녀」→「나/노/요/이」「야/여」",
+    explanation: "同じ漢字でも、単語の一番最初に来るときだけ発音（表記）が変わる韓国語独自の規則。ㄹで始まる漢字音は語頭でㄴまたはㅇに、ㄴ＋야行の漢字音は語頭でㅇに変わる。単語の途中（二文字目以降）では元の音のまま。日本語の音読みにはこの現象がないため、対応パターンとして知っておくと語頭変化した単語も推測しやすくなる。",
+    pairs: [
+      { hanja: "女子", korean: "여자（語中: 남녀の녀のまま）", japanese: "じょし", meaning: "女子" },
+      { hanja: "老人", korean: "노인（語中: 경로の로のまま）", japanese: "ろうじん", meaning: "老人" },
+      { hanja: "理由", korean: "이유（語中: 무리の리のまま）", japanese: "りゆう", meaning: "理由" },
+      { hanja: "良心", korean: "양심（語中: 불량の량のまま）", japanese: "りょうしん", meaning: "良心" },
+      { hanja: "樂園", korean: "낙원（語中: 쾌락の락のまま）", japanese: "らくえん", meaning: "楽園" },
+      { hanja: "歷史", korean: "역사（語中: 경력の력のまま）", japanese: "れきし", meaning: "歴史" },
+    ],
+  },
 ];

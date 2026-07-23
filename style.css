@@ -675,3 +675,43 @@ body {
   margin-left: auto;
   font-size: 0.92rem;
 }
+
+/* ---------- 漢字語の「偽の友」セクション ---------- */
+
+.section-subheading {
+  max-width: 900px;
+  margin: var(--space-2) auto var(--space-2);
+  padding: 0 var(--space-4);
+  font-size: 1.2rem;
+}
+
+.false-friend-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.false-friend-side {
+  background: var(--color-bg);
+  border-radius: var(--space-1);
+  padding: var(--space-3);
+}
+
+.false-friend-side p {
+  margin: var(--space-1) 0 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.false-friend-flag {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 480px) {
+  .false-friend-compare {
+    grid-template-columns: 1fr;
+  }
+}

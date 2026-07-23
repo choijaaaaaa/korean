@@ -335,6 +335,47 @@ document.getElementById("hanja-search").addEventListener("input", (e) => {
   renderHanjaPatterns();
 });
 
+function renderFalseFriends() {
+  const listEl = document.getElementById("false-friends-list");
+  listEl.innerHTML = "";
+  const fragment = document.createDocumentFragment();
+
+  FALSE_FRIENDS.forEach((ff) => {
+    const card = document.createElement("article");
+    card.className = "pattern-card false-friend-card";
+
+    const title = document.createElement("h3");
+    title.innerHTML = `<span class="grammar-pattern-text">${escapeHtml(ff.hanja)}</span> <span class="grammar-title-ja">（${escapeHtml(ff.korean)} / ${escapeHtml(ff.japaneseReading)}）</span>`;
+    card.appendChild(title);
+
+    const compare = document.createElement("div");
+    compare.className = "false-friend-compare";
+    compare.innerHTML = `<div class="false-friend-side">
+        <span class="false-friend-flag">🇰🇷 韓国語</span>
+        <p>${escapeHtml(ff.koreanMeaning)}</p>
+      </div>
+      <div class="false-friend-side">
+        <span class="false-friend-flag">🇯🇵 日本語</span>
+        <p>${escapeHtml(ff.japaneseMeaning)}</p>
+      </div>`;
+    card.appendChild(compare);
+
+    const note = document.createElement("p");
+    note.className = "irregular-note";
+    note.textContent = ff.note;
+    card.appendChild(note);
+
+    fragment.appendChild(card);
+  });
+
+  listEl.appendChild(fragment);
+}
+
+function renderHanjaSection() {
+  renderHanjaPatterns();
+  renderFalseFriends();
+}
+
 // ---------- 文法パターンセクション ----------
 
 const grammarState = { level: "ALL" };
@@ -609,7 +650,7 @@ const sections = {
 };
 
 const sectionRenderers = {
-  hanja: renderHanjaPatterns,
+  hanja: renderHanjaSection,
   grammar: renderGrammarPatterns,
   pronunciation: renderPronunciationRules,
   irregular: renderIrregulars,
